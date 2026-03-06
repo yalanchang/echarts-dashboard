@@ -15,8 +15,8 @@ export function getPool(): mysql.Pool {
     database:           config.dbName as string,
     charset:            'utf8mb4',
     waitForConnections: true,
-    connectionLimit:    5,  
-    queueLimit:         0,
+    connectionLimit:    2,  
+    queueLimit:         5,  
     enableKeepAlive:    true,
     keepAliveInitialDelay: 0,
     // 加入 SSL 配置 

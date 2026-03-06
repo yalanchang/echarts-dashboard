@@ -1,10 +1,4 @@
 
-CREATE DATABASE IF NOT EXISTS admin_db
-  CHARACTER SET utf8mb4
-  COLLATE utf8mb4_unicode_ci;
-
-USE admin_db;
-
 -- ── users ──────────────────────────────────────────────────
 CREATE TABLE IF NOT EXISTS users (
   id         BIGINT       UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -158,6 +152,3 @@ INSERT INTO order_items (order_id, product_id, qty, unit_price) VALUES
   (5, 10, 2, 899),
   -- 訂單 6: 買了記憶枕 (後來取消)
   (6, 9, 1, 2199);
-UPDATE admin_db.users 
-SET password = '$2a$10$w7Hi72xGiGCG.ATFw1GRbOrRdt16BOOJj3YqW6WEySoLt6H.0FVBu'
-WHERE email = 'admin@example.com';

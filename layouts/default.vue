@@ -162,16 +162,12 @@ function handleExport() {
         </span>
 
         <div class="ml-auto flex items-center gap-2">
-          <span class="hidden sm:flex items-center gap-1.5 rounded-md bg-c1/10
-                       px-2.5 py-1 font-mono text-[11px] text-c1">
-            <span class="h-1.5 w-1.5 animate-pulse rounded-full bg-c1" />
-            MySQL
-          </span>
+      
           <input
             class="hidden md:block rounded-lg border border-bline bg-bg2
                    px-3 py-1.5 text-xs text-[#dde3ef] outline-none
                    transition focus:border-c1 w-36"
-            placeholder="🔍 搜尋..."
+            placeholder="搜尋..."
           >
           <template v-if="route.path.startsWith('/orders') || route.path.startsWith('/users') || route.path.startsWith('/products')">
             <button

@@ -19,6 +19,9 @@ declare module "nitropack/types" {
     '/api/auth/orders': {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/auth/orders/index.get').default>>>>
     }
+    '/api/categories': {
+      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/categories/index.get').default>>>>
+    }
     '/api/charts/revenue': {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/charts/revenue.get').default>>>>
     }
@@ -38,6 +41,17 @@ declare module "nitropack/types" {
     '/api/orders': {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/orders/index.get').default>>>>
       'post': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/orders/index.post').default>>>>
+    }
+    '/api/products/:id': {
+      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/products/[id].get').default>>>>
+      'patch': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/products/[id].patch').default>>>>
+    }
+    '/api/products': {
+      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/products/index.get').default>>>>
+      'post': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/products/index.post').default>>>>
+    }
+    '/api/settings/password': {
+      'patch': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/settings/password.patch').default>>>>
     }
     '/api/users/:id': {
       'delete': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/users/[id].delete').default>>>>

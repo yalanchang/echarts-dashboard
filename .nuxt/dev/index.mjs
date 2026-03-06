@@ -639,12 +639,21 @@ const _inlineRuntimeConfig = {
         "cache": false
       },
       "/api/**": {
-        "cors": true,
+        "cors": false,
         "headers": {
-          "access-control-allow-origin": "*",
-          "access-control-allow-methods": "*",
-          "access-control-allow-headers": "*",
-          "access-control-max-age": "0"
+          "X-Content-Type-Options": "nosniff",
+          "X-Frame-Options": "DENY",
+          "X-XSS-Protection": "1; mode=block",
+          "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+        }
+      },
+      "/**": {
+        "headers": {
+          "X-Frame-Options": "DENY",
+          "X-Content-Type-Options": "nosniff",
+          "Referrer-Policy": "strict-origin-when-cross-origin",
+          "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
+          "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;"
         }
       }
     }
@@ -658,7 +667,7 @@ const _inlineRuntimeConfig = {
   "dbUser": "root",
   "dbPass": "",
   "dbName": "admin_db",
-  "jwtSecret": "change_me_in_production"
+  "jwtSecret": "821b32ff04a0edd540ae6940351b5be65300a4b78f9b4c4135d4a242044c20f8"
 };
 const envOptions = {
   prefix: "NITRO_",
@@ -2044,7 +2053,7 @@ const _hhRrqWPSxHFH9vNM2IsVafsLmxJ0yTXJvV9cz43Dl6E = (function(nitro) {
 
 const rootDir = "/Users/zhangyalan/echart/echart";
 
-const appHead = {"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"}],"link":[],"style":[],"script":[],"noscript":[],"title":"DataPulse Admin"};
+const appHead = {"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"name":"robots","content":"noindex, nofollow"}],"link":[],"style":[],"script":[],"noscript":[],"title":"DataPulse Admin"};
 
 const appRootTag = "div";
 
@@ -2145,7 +2154,22 @@ const plugins = [
 _AUpb5PPp7qlF8tqHCyRdp5_shHgYUbteBzuXgCoKI
 ];
 
-const assets = {};
+const assets = {
+  "/index.mjs": {
+    "type": "text/javascript; charset=utf-8",
+    "etag": "\"21ad1-xwoKeDZaRoFZwtJeJf19uOMocdo\"",
+    "mtime": "2026-03-06T14:08:11.013Z",
+    "size": 137937,
+    "path": "index.mjs"
+  },
+  "/index.mjs.map": {
+    "type": "application/json",
+    "etag": "\"80d3d-wt0Iot0ABdkenJiyl7gt44jA6QQ\"",
+    "mtime": "2026-03-06T14:08:11.015Z",
+    "size": 527677,
+    "path": "index.mjs.map"
+  }
+};
 
 function readAsset (id) {
   const serverDir = dirname$1(fileURLToPath(globalThis._importMeta_.url));
@@ -2641,17 +2665,23 @@ async function getIslandContext(event) {
 const _lazy_N2Ksfq = () => Promise.resolve().then(function () { return login_post$1; });
 const _lazy_ljJmMd = () => Promise.resolve().then(function () { return logout_post$1; });
 const _lazy_hKcBvB = () => Promise.resolve().then(function () { return me_get$1; });
-const _lazy_iKFEDu = () => Promise.resolve().then(function () { return _id__get$3; });
-const _lazy_urKYWw = () => Promise.resolve().then(function () { return _id__patch$3; });
-const _lazy_x7XebX = () => Promise.resolve().then(function () { return index_get$5; });
+const _lazy_iKFEDu = () => Promise.resolve().then(function () { return _id__get$5; });
+const _lazy_urKYWw = () => Promise.resolve().then(function () { return _id__patch$5; });
+const _lazy_x7XebX = () => Promise.resolve().then(function () { return index_get$9; });
+const _lazy_su52_a = () => Promise.resolve().then(function () { return index_get$7; });
 const _lazy_X_JwDr = () => Promise.resolve().then(function () { return revenue_get$1; });
 const _lazy_9fbOUn = () => Promise.resolve().then(function () { return stats_get$1; });
 const _lazy_Rd3j9M = () => Promise.resolve().then(function () { return health_get$1; });
-const _lazy_DIhmp6 = () => Promise.resolve().then(function () { return _id__get$1; });
-const _lazy_DnmcYw = () => Promise.resolve().then(function () { return _id__patch$1; });
+const _lazy_DIhmp6 = () => Promise.resolve().then(function () { return _id__get$3; });
+const _lazy_DnmcYw = () => Promise.resolve().then(function () { return _id__patch$3; });
 const _lazy_FpqmGl = () => Promise.resolve().then(function () { return export_get$1; });
-const _lazy_0SON7j = () => Promise.resolve().then(function () { return index_get$3; });
-const _lazy_7cF4u7 = () => Promise.resolve().then(function () { return index_post$3; });
+const _lazy_0SON7j = () => Promise.resolve().then(function () { return index_get$5; });
+const _lazy_7cF4u7 = () => Promise.resolve().then(function () { return index_post$5; });
+const _lazy_LHutRA = () => Promise.resolve().then(function () { return _id__get$1; });
+const _lazy_mCtcvQ = () => Promise.resolve().then(function () { return _id__patch$1; });
+const _lazy_NXD0Bq = () => Promise.resolve().then(function () { return index_get$3; });
+const _lazy_8I_Q7M = () => Promise.resolve().then(function () { return index_post$3; });
+const _lazy_BInWg0 = () => Promise.resolve().then(function () { return password_patch$1; });
 const _lazy_H7Op6B = () => Promise.resolve().then(function () { return _id__delete$1; });
 const _lazy_R0aSVu = () => Promise.resolve().then(function () { return index_get$1; });
 const _lazy_1OloWS = () => Promise.resolve().then(function () { return index_post$1; });
@@ -2666,6 +2696,7 @@ const handlers = [
   { route: '/api/auth/orders/:id', handler: _lazy_iKFEDu, lazy: true, middleware: false, method: "get" },
   { route: '/api/auth/orders/:id', handler: _lazy_urKYWw, lazy: true, middleware: false, method: "patch" },
   { route: '/api/auth/orders', handler: _lazy_x7XebX, lazy: true, middleware: false, method: "get" },
+  { route: '/api/categories', handler: _lazy_su52_a, lazy: true, middleware: false, method: "get" },
   { route: '/api/charts/revenue', handler: _lazy_X_JwDr, lazy: true, middleware: false, method: "get" },
   { route: '/api/dashboard/stats', handler: _lazy_9fbOUn, lazy: true, middleware: false, method: "get" },
   { route: '/api/health', handler: _lazy_Rd3j9M, lazy: true, middleware: false, method: "get" },
@@ -2674,6 +2705,11 @@ const handlers = [
   { route: '/api/orders/export', handler: _lazy_FpqmGl, lazy: true, middleware: false, method: "get" },
   { route: '/api/orders', handler: _lazy_0SON7j, lazy: true, middleware: false, method: "get" },
   { route: '/api/orders', handler: _lazy_7cF4u7, lazy: true, middleware: false, method: "post" },
+  { route: '/api/products/:id', handler: _lazy_LHutRA, lazy: true, middleware: false, method: "get" },
+  { route: '/api/products/:id', handler: _lazy_mCtcvQ, lazy: true, middleware: false, method: "patch" },
+  { route: '/api/products', handler: _lazy_NXD0Bq, lazy: true, middleware: false, method: "get" },
+  { route: '/api/products', handler: _lazy_8I_Q7M, lazy: true, middleware: false, method: "post" },
+  { route: '/api/settings/password', handler: _lazy_BInWg0, lazy: true, middleware: false, method: "patch" },
   { route: '/api/users/:id', handler: _lazy_H7Op6B, lazy: true, middleware: false, method: "delete" },
   { route: '/api/users', handler: _lazy_R0aSVu, lazy: true, middleware: false, method: "get" },
   { route: '/api/users', handler: _lazy_1OloWS, lazy: true, middleware: false, method: "post" },
@@ -3151,7 +3187,7 @@ const me_get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   default: me_get
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const _id__get$2 = defineEventHandler(async (event) => {
+const _id__get$4 = defineEventHandler(async (event) => {
   requireAuth(event);
   const id = Number(getRouterParam(event, "id"));
   if (!id) throw createError({ statusCode: 400, message: "\u7121\u6548\u7684\u8A02\u55AE ID" });
@@ -3177,12 +3213,12 @@ const _id__get$2 = defineEventHandler(async (event) => {
   return ok({ ...order, items });
 });
 
-const _id__get$3 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+const _id__get$5 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
-  default: _id__get$2
+  default: _id__get$4
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const _id__patch$2 = defineEventHandler(async (event) => {
+const _id__patch$4 = defineEventHandler(async (event) => {
   var _a;
   requireAdmin(event);
   const q = getQuery$1(event);
@@ -3218,12 +3254,12 @@ const _id__patch$2 = defineEventHandler(async (event) => {
   return paginated(rows, (_a = countRow == null ? void 0 : countRow.total) != null ? _a : 0, page, limit);
 });
 
-const _id__patch$3 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+const _id__patch$5 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
-  default: _id__patch$2
+  default: _id__patch$4
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const index_get$4 = defineEventHandler(async (event) => {
+const index_get$8 = defineEventHandler(async (event) => {
   var _a;
   requireAuth(event);
   const q = getQuery$1(event);
@@ -3265,9 +3301,20 @@ const index_get$4 = defineEventHandler(async (event) => {
   return paginated(rows, (_a = countRow == null ? void 0 : countRow.total) != null ? _a : 0, page, limit);
 });
 
-const index_get$5 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+const index_get$9 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
-  default: index_get$4
+  default: index_get$8
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const index_get$6 = defineEventHandler(async (event) => {
+  requireAuth(event);
+  const rows = await query(`SELECT id, name FROM categories ORDER BY id`);
+  return ok(rows);
+});
+
+const index_get$7 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: index_get$6
 }, Symbol.toStringTag, { value: 'Module' }));
 
 const revenue_get = defineEventHandler(async (event) => {
@@ -3413,7 +3460,7 @@ const health_get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProper
   default: health_get
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const _id__get = defineEventHandler(async (event) => {
+const _id__get$2 = defineEventHandler(async (event) => {
   requireAuth(event);
   const id = Number(getRouterParam(event, "id"));
   if (!id) throw createError({ statusCode: 400, message: "\u7121\u6548\u7684\u8A02\u55AE ID" });
@@ -3439,13 +3486,13 @@ const _id__get = defineEventHandler(async (event) => {
   return ok({ ...order, items });
 });
 
-const _id__get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+const _id__get$3 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
-  default: _id__get
+  default: _id__get$2
 }, Symbol.toStringTag, { value: 'Module' }));
 
 const VALID_STATUSES = ["pending", "processing", "shipped", "done", "refund", "cancelled"];
-const _id__patch = defineEventHandler(async (event) => {
+const _id__patch$2 = defineEventHandler(async (event) => {
   requireAuth(event);
   const id = Number(getRouterParam(event, "id"));
   const body = await readBody(event);
@@ -3471,9 +3518,9 @@ const _id__patch = defineEventHandler(async (event) => {
   return ok(updated, "\u66F4\u65B0\u6210\u529F");
 });
 
-const _id__patch$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+const _id__patch$3 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
-  default: _id__patch
+  default: _id__patch$2
 }, Symbol.toStringTag, { value: 'Module' }));
 
 const export_get = defineEventHandler(async (event) => {
@@ -3502,7 +3549,7 @@ const export_get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProper
   default: export_get
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const index_get$2 = defineEventHandler(async (event) => {
+const index_get$4 = defineEventHandler(async (event) => {
   var _a;
   requireAuth(event);
   const q = getQuery$1(event);
@@ -3544,12 +3591,12 @@ const index_get$2 = defineEventHandler(async (event) => {
   return paginated(rows, (_a = countRow == null ? void 0 : countRow.total) != null ? _a : 0, page, limit);
 });
 
-const index_get$3 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+const index_get$5 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
-  default: index_get$2
+  default: index_get$4
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const index_post$2 = defineEventHandler(async (event) => {
+const index_post$4 = defineEventHandler(async (event) => {
   var _a, _b;
   requireAuth(event);
   const body = await readBody(event);
@@ -3563,9 +3610,136 @@ const index_post$2 = defineEventHandler(async (event) => {
   return ok({ order_no: orderNo }, "\u8A02\u55AE\u5EFA\u7ACB\u6210\u529F");
 });
 
+const index_post$5 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: index_post$4
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const _id__get = defineEventHandler(async (event) => {
+  requireAuth(event);
+  const id = Number(getRouterParam(event, "id"));
+  if (!id) throw createError({ statusCode: 400, message: "\u7121\u6548\u7684 ID" });
+  const product = await queryOne(`
+    SELECT p.*, c.name AS category
+    FROM products p
+    JOIN categories c ON c.id = p.category_id
+    WHERE p.id = ?
+  `, [id]);
+  if (!product) throw createError({ statusCode: 404, message: "\u5546\u54C1\u4E0D\u5B58\u5728" });
+  return ok(product);
+});
+
+const _id__get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: _id__get
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const _id__patch = defineEventHandler(async (event) => {
+  requireAuth(event);
+  const id = Number(getRouterParam(event, "id"));
+  const body = await readBody(event);
+  if (!id) fail("\u7121\u6548\u7684 ID");
+  const allowed = ["name", "price", "cost", "stock", "is_active"];
+  const updates = [];
+  const params = [];
+  for (const key of allowed) {
+    if (body[key] !== void 0) {
+      updates.push(`${key} = ?`);
+      params.push(body[key]);
+    }
+  }
+  if (!updates.length) fail("\u6C92\u6709\u9700\u8981\u66F4\u65B0\u7684\u6B04\u4F4D");
+  params.push(id);
+  await queryOne(`UPDATE products SET ${updates.join(", ")} WHERE id = ?`, params);
+  return ok(null, "\u66F4\u65B0\u6210\u529F");
+});
+
+const _id__patch$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: _id__patch
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const index_get$2 = defineEventHandler(async (event) => {
+  var _a;
+  requireAuth(event);
+  const q = getQuery$1(event);
+  const page = Math.max(1, Number(q.page) || 1);
+  const limit = Math.min(100, Number(q.limit) || 20);
+  const offset = (page - 1) * limit;
+  const search = q.search;
+  const conditions = [];
+  const params = [];
+  if (search) {
+    conditions.push("(p.name LIKE ? OR p.sku LIKE ?)");
+    params.push(`%${search}%`, `%${search}%`);
+  }
+  const where = conditions.length ? `WHERE ${conditions.join(" AND ")}` : "";
+  const rows = await query(`
+    SELECT p.id, p.name, p.sku, p.price, p.cost, p.stock, p.is_active,
+           c.name AS category
+    FROM products p
+    JOIN categories c ON c.id = p.category_id
+    ${where}
+    ORDER BY p.created_at DESC
+    LIMIT ? OFFSET ?
+  `, [...params, limit, offset]);
+  const countRow = await queryOne(
+    `SELECT COUNT(*) AS total FROM products p ${where}`,
+    params
+  );
+  return paginated(rows, (_a = countRow == null ? void 0 : countRow.total) != null ? _a : 0, page, limit);
+});
+
+const index_get$3 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: index_get$2
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const index_post$2 = defineEventHandler(async (event) => {
+  var _a, _b, _c;
+  requireAuth(event);
+  const body = await readBody(event);
+  if (!body.name || !body.sku || !body.category_id) {
+    fail("\u540D\u7A31\u3001SKU\u3001\u5206\u985E\u70BA\u5FC5\u586B");
+  }
+  const exists = await queryOne(`SELECT id FROM products WHERE sku = ?`, [body.sku]);
+  if (exists) fail("SKU \u5DF2\u5B58\u5728", 409);
+  const result = await queryOne(
+    `INSERT INTO products (name, sku, price, cost, stock, category_id)
+     VALUES (?, ?, ?, ?, ?, ?)`,
+    [body.name, body.sku, (_a = body.price) != null ? _a : 0, (_b = body.cost) != null ? _b : 0, (_c = body.stock) != null ? _c : 0, body.category_id]
+  );
+  return ok({ id: result.insertId }, "\u5546\u54C1\u5EFA\u7ACB\u6210\u529F");
+});
+
 const index_post$3 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
   default: index_post$2
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const password_patch = defineEventHandler(async (event) => {
+  const me = requireAuth(event);
+  const body = await readBody(event);
+  if (!body.current_password || !body.new_password) {
+    fail("\u8ACB\u586B\u5BEB\u6240\u6709\u6B04\u4F4D");
+  }
+  if (body.new_password.length < 8) {
+    fail("\u65B0\u5BC6\u78BC\u81F3\u5C11 8 \u500B\u5B57\u5143");
+  }
+  const user = await queryOne(
+    `SELECT password FROM users WHERE id = ?`,
+    [me.userId]
+  );
+  const valid = await bcrypt.compare(body.current_password, user.password);
+  if (!valid) fail("\u76EE\u524D\u5BC6\u78BC\u932F\u8AA4", 401);
+  const hash = await bcrypt.hash(body.new_password, 12);
+  await queryOne(`UPDATE users SET password = ? WHERE id = ?`, [hash, me.userId]);
+  return ok(null, "\u5BC6\u78BC\u66F4\u65B0\u6210\u529F");
+});
+
+const password_patch$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: password_patch
 }, Symbol.toStringTag, { value: 'Module' }));
 
 const _id__delete = defineEventHandler(async (event) => {

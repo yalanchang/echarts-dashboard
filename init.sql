@@ -100,7 +100,7 @@ INSERT IGNORE INTO categories (name, slug) VALUES
   ('運動戶外', 'sports'),
   ('其他',     'others');
 
--- ── admin user (密碼:  Admin@1234) ────────────────
+-- ── admin user (密碼:  11111111) ────────────────
 INSERT IGNORE INTO users (name, email, password, role) VALUES
   ('Admin', 'admin@example.com',
    '$2b$12$KIFnAqBKAMwFHrpxl3xKYuXxv2FqO6kP4qL9RHyoG5AxGldAuJMGa',
@@ -158,9 +158,6 @@ INSERT INTO order_items (order_id, product_id, qty, unit_price) VALUES
   (5, 10, 2, 899),
   -- 訂單 6: 買了記憶枕 (後來取消)
   (6, 9, 1, 2199);
-
-USE admin_db;
-
-UPDATE users 
-SET password = '$2b$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2uheWG/igi.'
+UPDATE admin_db.users 
+SET password = '$2a$10$w7Hi72xGiGCG.ATFw1GRbOrRdt16BOOJj3YqW6WEySoLt6H.0FVBu'
 WHERE email = 'admin@example.com';

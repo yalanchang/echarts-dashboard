@@ -30,8 +30,8 @@ export function getPool(): mysql.Pool {
 
 export async function query<T = unknown>(sql: string, params?: unknown[]): Promise<T[]> {
   try {
-    const result = await getPool().execute(sql, params as any)
-    return (result[0] as any[]) as T[]
+    const [rows] = await getPool().query(sql, params)
+    return rows as T[]
   } catch (error) {
     console.error('Query error:', error)
     throw error
@@ -40,9 +40,8 @@ export async function query<T = unknown>(sql: string, params?: unknown[]): Promi
 
 export async function queryOne<T = unknown>(sql: string, params?: unknown[]): Promise<T | null> {
   try {
-    const result = await getPool().execute(sql, params as any)
-    const rows = (result[0] as any[])
-    return (rows[0] ?? null) as T | null
+    const [rows] = await getPool().query(sql, params)
+    return ((rows as any[])[0] ?? null) as T | null
   } catch (error) {
     console.error('QueryOne error:', error)
     throw error

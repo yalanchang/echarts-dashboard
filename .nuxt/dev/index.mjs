@@ -639,28 +639,34 @@ const _inlineRuntimeConfig = {
         "cache": false
       },
       "/api/**": {
-        "cors": false,
+        "cors": true,
         "headers": {
-          "X-Content-Type-Options": "nosniff",
-          "X-Frame-Options": "DENY",
-          "X-XSS-Protection": "1; mode=block",
-          "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+          "access-control-allow-origin": "*",
+          "access-control-allow-methods": "*",
+          "access-control-allow-headers": "*",
+          "access-control-max-age": "0",
+          "Access-Control-Allow-Origin": "https://admin.yourcompany.com",
+          "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
+          "Access-Control-Allow-Headers": "Content-Type, Authorization",
+          "Access-Control-Allow-Credentials": "true"
         }
       },
-      "/**": {
+      "/_nuxt/builds/meta/**": {
         "headers": {
-          "X-Frame-Options": "DENY",
-          "X-Content-Type-Options": "nosniff",
-          "Referrer-Policy": "strict-origin-when-cross-origin",
-          "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
-          "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com;"
+          "cache-control": "public, max-age=31536000, immutable"
+        }
+      },
+      "/_nuxt/builds/**": {
+        "headers": {
+          "cache-control": "public, max-age=1, immutable"
         }
       }
     }
   },
   "public": {
     "appName": "DataPulse Admin",
-    "appVersion": "1.0.0"
+    "appVersion": "1.0.0",
+    "apiBase": "/api"
   },
   "dbHost": "127.0.0.1",
   "dbPort": "3306",
@@ -2161,7 +2167,7 @@ function readAsset (id) {
   return promises.readFile(resolve$1(serverDir, assets[id].path))
 }
 
-const publicAssetBases = {};
+const publicAssetBases = {"/_nuxt/builds/meta/":{"maxAge":31536000},"/_nuxt/builds/":{"maxAge":1}};
 
 function isPublicAssetURL(id = '') {
   if (assets[id]) {
@@ -2664,6 +2670,7 @@ const _lazy_mCtcvQ = () => Promise.resolve().then(function () { return _id__patc
 const _lazy_NXD0Bq = () => Promise.resolve().then(function () { return index_get$3; });
 const _lazy_8I_Q7M = () => Promise.resolve().then(function () { return index_post$3; });
 const _lazy_BInWg0 = () => Promise.resolve().then(function () { return password_patch$1; });
+const _lazy_QO7AGM = () => Promise.resolve().then(function () { return testDb$1; });
 const _lazy_H7Op6B = () => Promise.resolve().then(function () { return _id__delete$1; });
 const _lazy_Um2KmO = () => Promise.resolve().then(function () { return _id__patch$1; });
 const _lazy_R0aSVu = () => Promise.resolve().then(function () { return index_get$1; });
@@ -2690,6 +2697,7 @@ const handlers = [
   { route: '/api/products', handler: _lazy_NXD0Bq, lazy: true, middleware: false, method: "get" },
   { route: '/api/products', handler: _lazy_8I_Q7M, lazy: true, middleware: false, method: "post" },
   { route: '/api/settings/password', handler: _lazy_BInWg0, lazy: true, middleware: false, method: "patch" },
+  { route: '/api/test-db', handler: _lazy_QO7AGM, lazy: true, middleware: false, method: undefined },
   { route: '/api/users/:id', handler: _lazy_H7Op6B, lazy: true, middleware: false, method: "delete" },
   { route: '/api/users/:id', handler: _lazy_Um2KmO, lazy: true, middleware: false, method: "patch" },
   { route: '/api/users', handler: _lazy_R0aSVu, lazy: true, middleware: false, method: "get" },
@@ -3097,45 +3105,54 @@ function fail(message, statusCode = 400) {
 }
 
 const login_post = defineEventHandler(async (event) => {
-  const body = await readBody(event);
-  if (!(body == null ? void 0 : body.email) || !(body == null ? void 0 : body.password)) {
-    fail("\u8ACB\u8F38\u5165\u5E33\u865F\u8207\u5BC6\u78BC");
-  }
-  const user = await queryOne(
-    `SELECT id, name, email, password, role
-     FROM users
-     WHERE email = ? AND is_active = 1
-     LIMIT 1`,
-    [body.email]
-  );
-  if (!user) fail("\u5E33\u865F\u6216\u5BC6\u78BC\u932F\u8AA4", 401);
-  const valid = await bcrypt.compare(body.password, user.password);
-  if (!valid) fail("\u5E33\u865F\u6216\u5BC6\u78BC\u932F\u8AA4", 401);
-  await queryOne(
-    `UPDATE users SET last_login = NOW() WHERE id = ?`,
-    [user.id]
-  );
-  const token = signToken({
-    userId: user.id,
-    email: user.email,
-    role: user.role
-  });
-  setCookie(event, "auth_token", token, {
-    httpOnly: true,
-    secure: false,
-    maxAge: 60 * 60 * 24 * 7,
-    // 7 days
-    sameSite: "lax"
-  });
-  return ok({
-    token,
-    user: {
-      id: user.id,
-      name: user.name,
+  try {
+    const body = await readBody(event);
+    if (!(body == null ? void 0 : body.email) || !(body == null ? void 0 : body.password)) {
+      return fail("\u8ACB\u8F38\u5165\u5E33\u865F\u8207\u5BC6\u78BC", 400);
+    }
+    const user = await queryOne(
+      `SELECT id, name, email, password, role
+       FROM users
+       WHERE email = ? AND is_active = 1
+       LIMIT 1`,
+      [body.email]
+    );
+    if (!user) {
+      return fail("\u5E33\u865F\u6216\u5BC6\u78BC\u932F\u8AA4", 401);
+    }
+    const valid = await bcrypt.compare(body.password, user.password);
+    if (!valid) {
+      return fail("\u5E33\u865F\u6216\u5BC6\u78BC\u932F\u8AA4", 401);
+    }
+    await queryOne(
+      `UPDATE users SET last_login = NOW() WHERE id = ?`,
+      [user.id]
+    );
+    const token = signToken({
+      userId: user.id,
       email: user.email,
       role: user.role
-    }
-  }, "\u767B\u5165\u6210\u529F");
+    });
+    setCookie(event, "auth_token", token, {
+      httpOnly: true,
+      secure: false,
+      maxAge: 60 * 60 * 24 * 7,
+      sameSite: "lax",
+      path: "/"
+    });
+    return ok({
+      token,
+      user: {
+        id: user.id,
+        name: user.name,
+        email: user.email,
+        role: user.role
+      }
+    }, "\u767B\u5165\u6210\u529F");
+  } catch (error) {
+    console.error("\u767B\u5165\u932F\u8AA4:", error);
+    return fail(error.message || "\u4F3A\u670D\u5668\u932F\u8AA4", 500);
+  }
 });
 
 const login_post$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
@@ -3604,6 +3621,35 @@ const password_patch$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.definePr
   default: password_patch
 }, Symbol.toStringTag, { value: 'Module' }));
 
+const testDb = defineEventHandler(async () => {
+  try {
+    const connection = await mysql.createConnection({
+      host: "bjctbw5lxnk4zzorrjzk-mysql.services.clever-cloud.com",
+      user: "uqb9xz4smqrjsan6",
+      password: "nZsPdKWAw1tNENquLAiS",
+      database: "bjctbw5lxnk4zzorrjzk",
+      port: 3306
+    });
+    const [rows] = await connection.execute("SELECT 1 as test");
+    await connection.end();
+    return {
+      success: true,
+      message: "Database connected!",
+      data: rows
+    };
+  } catch (error) {
+    return {
+      success: false,
+      error: error.message
+    };
+  }
+});
+
+const testDb$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: testDb
+}, Symbol.toStringTag, { value: 'Module' }));
+
 const _id__delete = defineEventHandler(async (event) => {
   const me = requireAdmin(event);
   const id = Number(getRouterParam(event, "id"));
@@ -3843,6 +3889,18 @@ const renderer = defineRenderHandler(async (event) => {
 			crossorigin: "anonymous",
 			href: payloadURL
 		} ] }, headEntryOptions);
+	}
+	if (ssrContext["~preloadManifest"] && !NO_SCRIPTS) {
+		ssrContext.head.push({ link: [{
+			rel: "preload",
+			as: "fetch",
+			fetchpriority: "low",
+			crossorigin: "anonymous",
+			href: buildAssetsURL(`builds/meta/${ssrContext.runtimeConfig.app.buildId}.json`)
+		}] }, {
+			...headEntryOptions,
+			tagPriority: "low"
+		});
 	}
 	// 2. Styles
 	if (inlinedStyles.length) {

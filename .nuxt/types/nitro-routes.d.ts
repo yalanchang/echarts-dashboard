@@ -46,6 +46,9 @@ declare module "nitropack/types" {
     '/api/settings/password': {
       'patch': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/settings/password.patch').default>>>>
     }
+    '/api/test-db': {
+      'default': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/test-db').default>>>>
+    }
     '/api/users/:id': {
       'delete': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/users/[id].delete').default>>>>
       'patch': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/users/[id].patch').default>>>>

@@ -31,6 +31,8 @@ import { NuxtModule, ModuleDependencyMeta } from '@nuxt/schema'
    appName: string,
 
    appVersion: string,
+
+   apiBase: string,
   }
 declare module '@nuxt/schema' {
   interface ModuleDependencies {

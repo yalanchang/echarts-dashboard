@@ -2160,7 +2160,22 @@ const plugins = [
 _AUpb5PPp7qlF8tqHCyRdp5_shHgYUbteBzuXgCoKI
 ];
 
-const assets = {};
+const assets = {
+  "/index.mjs": {
+    "type": "text/javascript; charset=utf-8",
+    "etag": "\"21e22-8TUi1rKD5JfqSWmDuCh5G8FD+cc\"",
+    "mtime": "2026-03-06T16:23:28.918Z",
+    "size": 138786,
+    "path": "index.mjs"
+  },
+  "/index.mjs.map": {
+    "type": "application/json",
+    "etag": "\"8110a-elEJfM/yG9wfSWJ/qzF+0ioNllo\"",
+    "mtime": "2026-03-06T16:23:28.919Z",
+    "size": 528650,
+    "path": "index.mjs.map"
+  }
+};
 
 function readAsset (id) {
   const serverDir = dirname$1(fileURLToPath(globalThis._importMeta_.url));
@@ -2670,7 +2685,9 @@ const _lazy_mCtcvQ = () => Promise.resolve().then(function () { return _id__patc
 const _lazy_NXD0Bq = () => Promise.resolve().then(function () { return index_get$3; });
 const _lazy_8I_Q7M = () => Promise.resolve().then(function () { return index_post$3; });
 const _lazy_BInWg0 = () => Promise.resolve().then(function () { return password_patch$1; });
+const _lazy_zXGDbP = () => Promise.resolve().then(function () { return testBcrypt$1; });
 const _lazy_QO7AGM = () => Promise.resolve().then(function () { return testDb$1; });
+const _lazy_oGTtLD = () => Promise.resolve().then(function () { return testLogin$1; });
 const _lazy_H7Op6B = () => Promise.resolve().then(function () { return _id__delete$1; });
 const _lazy_Um2KmO = () => Promise.resolve().then(function () { return _id__patch$1; });
 const _lazy_R0aSVu = () => Promise.resolve().then(function () { return index_get$1; });
@@ -2697,7 +2714,9 @@ const handlers = [
   { route: '/api/products', handler: _lazy_NXD0Bq, lazy: true, middleware: false, method: "get" },
   { route: '/api/products', handler: _lazy_8I_Q7M, lazy: true, middleware: false, method: "post" },
   { route: '/api/settings/password', handler: _lazy_BInWg0, lazy: true, middleware: false, method: "patch" },
+  { route: '/api/test-bcrypt', handler: _lazy_zXGDbP, lazy: true, middleware: false, method: undefined },
   { route: '/api/test-db', handler: _lazy_QO7AGM, lazy: true, middleware: false, method: undefined },
+  { route: '/api/test-login', handler: _lazy_oGTtLD, lazy: true, middleware: false, method: undefined },
   { route: '/api/users/:id', handler: _lazy_H7Op6B, lazy: true, middleware: false, method: "delete" },
   { route: '/api/users/:id', handler: _lazy_Um2KmO, lazy: true, middleware: false, method: "patch" },
   { route: '/api/users', handler: _lazy_R0aSVu, lazy: true, middleware: false, method: "get" },
@@ -3063,26 +3082,50 @@ function getPool() {
     database: config.dbName,
     charset: "utf8mb4",
     waitForConnections: true,
-    connectionLimit: 10,
-    queueLimit: 0
+    connectionLimit: 5,
+    queueLimit: 0,
+    enableKeepAlive: true,
+    keepAliveInitialDelay: 0,
+    // 加入 SSL 配置 
+    ssl: {
+      rejectUnauthorized: false
+      // Clever Cloud 需要這個設定來接受他們的自簽 SSL 證書
+    }
   });
   return pool;
 }
 async function query(sql, params) {
-  const result = await getPool().execute(sql, params);
-  return result[0];
+  try {
+    const result = await getPool().execute(sql, params);
+    return result[0];
+  } catch (error) {
+    console.error("Query error:", error);
+    throw error;
+  }
 }
 async function queryOne(sql, params) {
   var _a;
-  const result = await getPool().execute(sql, params);
-  const rows = result[0];
-  return (_a = rows[0]) != null ? _a : null;
+  try {
+    const result = await getPool().execute(sql, params);
+    const rows = result[0];
+    return (_a = rows[0]) != null ? _a : null;
+  } catch (error) {
+    console.error("QueryOne error:", error);
+    throw error;
+  }
 }
 async function checkDB() {
-  const conn = await getPool().getConnection();
-  await conn.ping();
-  conn.release();
-  return true;
+  let conn;
+  try {
+    conn = await getPool().getConnection();
+    await conn.ping();
+    return true;
+  } catch (error) {
+    console.error("Database connection check failed:", error);
+    return false;
+  } finally {
+    if (conn) conn.release();
+  }
 }
 
 function ok(data, message) {
@@ -3621,6 +3664,28 @@ const password_patch$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.definePr
   default: password_patch
 }, Symbol.toStringTag, { value: 'Module' }));
 
+const testBcrypt = defineEventHandler(async (event) => {
+  try {
+    const body = await readBody(event);
+    const hash = "$2a$12$KIFnAqBKAMwFHrpxl3xKYuXxv2FqO6kP4qL9RHyoG5AxGldAuJMGa";
+    const isValid = bcrypt.compareSync(body.password, hash);
+    return {
+      success: true,
+      input: body.password,
+      hash,
+      isValid,
+      newHash: bcrypt.hashSync("11111111", 12)
+    };
+  } catch (error) {
+    return { success: false, error: error.message };
+  }
+});
+
+const testBcrypt$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: testBcrypt
+}, Symbol.toStringTag, { value: 'Module' }));
+
 const testDb = defineEventHandler(async () => {
   try {
     const connection = await mysql.createConnection({
@@ -3648,6 +3713,43 @@ const testDb = defineEventHandler(async () => {
 const testDb$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
   default: testDb
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const testLogin = defineEventHandler(async (event) => {
+  try {
+    const body = await readBody(event);
+    console.log("1. \u6536\u5230\u8ACB\u6C42:", body);
+    const connection = await mysql.createConnection({
+      host: "bjctbw5lxnk4zzorrjzk-mysql.services.clever-cloud.com",
+      user: "uqb9xz4smqrjsan6",
+      password: "nZsPdKWAw1tNENquLAiS",
+      database: "bjctbw5lxnk4zzorrjzk",
+      port: 3306
+    });
+    console.log("2. \u8CC7\u6599\u5EAB\u9023\u7DDA\u6210\u529F");
+    const [rows] = await connection.execute(
+      "SELECT id, email, role FROM users WHERE email = ?",
+      [body.email]
+    );
+    console.log("3. \u67E5\u8A62\u5B8C\u6210");
+    await connection.end();
+    return {
+      success: true,
+      message: "\u6E2C\u8A66\u6210\u529F",
+      data: rows
+    };
+  } catch (error) {
+    console.error("\u932F\u8AA4:", error);
+    return {
+      success: false,
+      error: error.message
+    };
+  }
+});
+
+const testLogin$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: testLogin
 }, Symbol.toStringTag, { value: 'Module' }));
 
 const _id__delete = defineEventHandler(async (event) => {

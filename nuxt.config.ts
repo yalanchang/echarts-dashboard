@@ -25,7 +25,7 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    preset: 'vercel',  // 指定 Vercel 部署
+    preset: 'vercel',  
     routeRules: {
       '/api/**': {
         cors: true,

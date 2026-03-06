@@ -25,15 +25,17 @@ coverage
 *.sw?
 
 *.tsbuildinfo
-
 .eslintcache
 
-# Cypress
-/cypress/videos/
-/cypress/screenshots/
+# Nuxt
+.nuxt/
+.output/
+.nitro/
 
-# Vitest
-__screenshots__/
+# 環境變數
+.env
+.env.local
+.env.*.local
 
 # Vite
 *.timestamp-*-*.mjs

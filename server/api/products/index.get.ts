@@ -29,7 +29,7 @@ export default defineEventHandler(async (event) => {
     ${where}
     ORDER BY p.created_at DESC
     LIMIT ? OFFSET ?
-  `, [...params, limit, offset])
+  `, [...params, Number(limit), Number(offset)])
 
   const countRow = await queryOne<{ total: number }>(
     `SELECT COUNT(*) AS total FROM products p ${where}`, params

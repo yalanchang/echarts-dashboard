@@ -3503,7 +3503,7 @@ const index_get$4 = defineEventHandler(async (event) => {
     ${where}
     ORDER BY o.created_at DESC
     LIMIT ? OFFSET ?
-  `, [...params, limit, offset]);
+  `, [...params, Number(limit), Number(offset)]);
   const countRow = await queryOne(`
     SELECT COUNT(*) AS total
     FROM orders o
@@ -3604,7 +3604,7 @@ const index_get$2 = defineEventHandler(async (event) => {
     ${where}
     ORDER BY p.created_at DESC
     LIMIT ? OFFSET ?
-  `, [...params, limit, offset]);
+  `, [...params, Number(limit), Number(offset)]);
   const countRow = await queryOne(
     `SELECT COUNT(*) AS total FROM products p ${where}`,
     params
@@ -3813,7 +3813,7 @@ const index_get = defineEventHandler(async (event) => {
     ${where}
     ORDER BY created_at DESC
     LIMIT ? OFFSET ?
-  `, [...params, limit, offset]);
+  `, [...params, Number(limit), Number(offset)]);
   const countRow = await queryOne(
     `SELECT COUNT(*) AS total FROM users ${where}`,
     params

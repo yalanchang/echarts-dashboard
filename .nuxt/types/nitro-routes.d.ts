@@ -12,13 +12,6 @@ declare module "nitropack/types" {
     '/api/auth/me': {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/auth/me.get').default>>>>
     }
-    '/api/auth/orders/:id': {
-      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/auth/orders/[id].get').default>>>>
-      'patch': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/auth/orders/[id].patch').default>>>>
-    }
-    '/api/auth/orders': {
-      'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/auth/orders/index.get').default>>>>
-    }
     '/api/categories': {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/categories/index.get').default>>>>
     }
@@ -55,6 +48,7 @@ declare module "nitropack/types" {
     }
     '/api/users/:id': {
       'delete': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/users/[id].delete').default>>>>
+      'patch': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/users/[id].patch').default>>>>
     }
     '/api/users': {
       'get': Simplify<Serialize<Awaited<ReturnType<typeof import('../../server/api/users/index.get').default>>>>

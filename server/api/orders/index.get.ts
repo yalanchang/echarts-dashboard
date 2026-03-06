@@ -23,6 +23,7 @@ export default defineEventHandler(async (event) => {
   const status = q.status as string | undefined
   const search = q.search as string | undefined
 
+  // 動態 WHERE
   const conditions: string[] = []
   const params: unknown[] = []
 

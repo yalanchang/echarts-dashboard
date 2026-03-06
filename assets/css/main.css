@@ -1,16 +1,55 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-@layer base {
-  html, body {
-    @apply bg-bg0 text-[#dde3ef];
-    font-family: 'DM Sans', sans-serif;
-  }
+:root {
+  --bg0:   #0d1117;
+  --bg1:   #0f1623;
+  --bg2:   #121620;
+  --bg3:   #181d2a;
+  --bline: #1e2536;
+  --c1:    #3bffa0;
+  --c2:    #ff6b6b;
+  --c3:    #ffd166;
+  --c4:    #74b9ff;
+  --c5:    #a29bfe;
+}
 
-  ::-webkit-scrollbar       { @apply w-1 h-1; }
-  ::-webkit-scrollbar-track  { background: transparent; }
-  ::-webkit-scrollbar-thumb  { @apply bg-bline rounded-sm; }
+.light-mode {
+  --bg0:   #f0f2f5;
+  --bg1:   #ffffff;
+  --bg2:   #f8f9fb;
+  --bg3:   #eef0f4;
+  --bline: #e2e6ed;
+  --c1:    #00b36b;
+  --c2:    #e5484d;
+  --c3:    #d4a017;
+  --c4:    #2d86e0;
+  --c5:    #7c6fcd;
+}
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background-color: var(--bg0);
+  color: #dde3ef;
+}
+
+.light-mode body,
+.light-mode #__nuxt {
+  color: #1a202c;
+  background-color: var(--bg0);
+}
+
+.light-mode .text-\[\#dde3ef\] { color: #1a202c !important; }
+.light-mode .text-gray-500     { color: #64748b !important; }
+.light-mode .text-gray-600     { color: #475569 !important; }
+.light-mode th, .light-mode td { color: #1a202c !important; }
+.light-mode input, .light-mode select, .light-mode textarea {
+  color: #1a202c !important;
+}
+
+* {
+  transition: background-color 0.25s ease, border-color 0.25s ease;
 }

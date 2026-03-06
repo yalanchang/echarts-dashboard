@@ -59,8 +59,8 @@ const lineMultiOption: EChartsOption = {
 const barStackOption: EChartsOption = {
   backgroundColor: 'transparent',
   grid: { top: 36, right: 12, bottom: 28, left: 44 },
+  
   legend: { top: 4, textStyle: { color: C.text2, fontSize: 11 } },
-  tooltip: tip(),
   xAxis: { type: 'category', data: ['Q1','Q2','Q3','Q4'], ...axisStyle() },
   yAxis: { type: 'value', ...axisStyle() },
   series: [
@@ -85,9 +85,13 @@ const barStackOption: EChartsOption = {
 // ── 付款方式環形餅圖 ──────────────────────────────────────
 const pie3Option: EChartsOption = {
   backgroundColor: 'transparent',
-  tooltip: tip('item'),
+  
   series: [{
     type: 'pie', radius: ['38%','65%'],
+    emphasis: {
+      scale: false,
+      label: { show: true },
+    },
     label: { formatter: '{b}\n{d}%', color: '#dde3ef', fontSize: 10 },
     data: [
       { value: 45, name: '信用卡',  itemStyle: { color: C.blue } },
@@ -101,9 +105,12 @@ const pie3Option: EChartsOption = {
 // ── 裝置類型餅圖 ──────────────────────────────────────────
 const pie4Option: EChartsOption = {
   backgroundColor: 'transparent',
-  tooltip: tip('item'),
   series: [{
     type: 'pie', radius: ['38%','65%'],
+    emphasis: {
+      scale: false,
+      label: { show: true },
+    },
     label: { formatter: '{b} {d}%', color: '#dde3ef', fontSize: 10 },
     data: [
       { value: 52, name: '手機', itemStyle: { color: C.green } },
@@ -123,6 +130,7 @@ const lineConvOption: EChartsOption = {
     type: 'value', ...axisStyle(),
     axisLabel: { color: C.text2, formatter: (v: number) => `${v}%` },
   },
+  
   series: [{
     type: 'line', smooth: true, symbol: 'none',
     data: [2.1,2.3,2.8,2.5,3.1,3.4,3.2,3.8,3.5,4.0,3.9,4.3],

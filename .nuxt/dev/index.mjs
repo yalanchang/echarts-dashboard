@@ -2154,22 +2154,7 @@ const plugins = [
 _AUpb5PPp7qlF8tqHCyRdp5_shHgYUbteBzuXgCoKI
 ];
 
-const assets = {
-  "/index.mjs": {
-    "type": "text/javascript; charset=utf-8",
-    "etag": "\"21ad1-xwoKeDZaRoFZwtJeJf19uOMocdo\"",
-    "mtime": "2026-03-06T14:08:11.013Z",
-    "size": 137937,
-    "path": "index.mjs"
-  },
-  "/index.mjs.map": {
-    "type": "application/json",
-    "etag": "\"80d3d-wt0Iot0ABdkenJiyl7gt44jA6QQ\"",
-    "mtime": "2026-03-06T14:08:11.015Z",
-    "size": 527677,
-    "path": "index.mjs.map"
-  }
-};
+const assets = {};
 
 function readAsset (id) {
   const serverDir = dirname$1(fileURLToPath(globalThis._importMeta_.url));
@@ -2665,24 +2650,22 @@ async function getIslandContext(event) {
 const _lazy_N2Ksfq = () => Promise.resolve().then(function () { return login_post$1; });
 const _lazy_ljJmMd = () => Promise.resolve().then(function () { return logout_post$1; });
 const _lazy_hKcBvB = () => Promise.resolve().then(function () { return me_get$1; });
-const _lazy_iKFEDu = () => Promise.resolve().then(function () { return _id__get$5; });
-const _lazy_urKYWw = () => Promise.resolve().then(function () { return _id__patch$5; });
-const _lazy_x7XebX = () => Promise.resolve().then(function () { return index_get$9; });
 const _lazy_su52_a = () => Promise.resolve().then(function () { return index_get$7; });
 const _lazy_X_JwDr = () => Promise.resolve().then(function () { return revenue_get$1; });
 const _lazy_9fbOUn = () => Promise.resolve().then(function () { return stats_get$1; });
 const _lazy_Rd3j9M = () => Promise.resolve().then(function () { return health_get$1; });
 const _lazy_DIhmp6 = () => Promise.resolve().then(function () { return _id__get$3; });
-const _lazy_DnmcYw = () => Promise.resolve().then(function () { return _id__patch$3; });
+const _lazy_DnmcYw = () => Promise.resolve().then(function () { return _id__patch$5; });
 const _lazy_FpqmGl = () => Promise.resolve().then(function () { return export_get$1; });
 const _lazy_0SON7j = () => Promise.resolve().then(function () { return index_get$5; });
 const _lazy_7cF4u7 = () => Promise.resolve().then(function () { return index_post$5; });
 const _lazy_LHutRA = () => Promise.resolve().then(function () { return _id__get$1; });
-const _lazy_mCtcvQ = () => Promise.resolve().then(function () { return _id__patch$1; });
+const _lazy_mCtcvQ = () => Promise.resolve().then(function () { return _id__patch$3; });
 const _lazy_NXD0Bq = () => Promise.resolve().then(function () { return index_get$3; });
 const _lazy_8I_Q7M = () => Promise.resolve().then(function () { return index_post$3; });
 const _lazy_BInWg0 = () => Promise.resolve().then(function () { return password_patch$1; });
 const _lazy_H7Op6B = () => Promise.resolve().then(function () { return _id__delete$1; });
+const _lazy_Um2KmO = () => Promise.resolve().then(function () { return _id__patch$1; });
 const _lazy_R0aSVu = () => Promise.resolve().then(function () { return index_get$1; });
 const _lazy_1OloWS = () => Promise.resolve().then(function () { return index_post$1; });
 const _lazy_IC7sdF = () => Promise.resolve().then(function () { return renderer$1; });
@@ -2693,9 +2676,6 @@ const handlers = [
   { route: '/api/auth/login', handler: _lazy_N2Ksfq, lazy: true, middleware: false, method: "post" },
   { route: '/api/auth/logout', handler: _lazy_ljJmMd, lazy: true, middleware: false, method: "post" },
   { route: '/api/auth/me', handler: _lazy_hKcBvB, lazy: true, middleware: false, method: "get" },
-  { route: '/api/auth/orders/:id', handler: _lazy_iKFEDu, lazy: true, middleware: false, method: "get" },
-  { route: '/api/auth/orders/:id', handler: _lazy_urKYWw, lazy: true, middleware: false, method: "patch" },
-  { route: '/api/auth/orders', handler: _lazy_x7XebX, lazy: true, middleware: false, method: "get" },
   { route: '/api/categories', handler: _lazy_su52_a, lazy: true, middleware: false, method: "get" },
   { route: '/api/charts/revenue', handler: _lazy_X_JwDr, lazy: true, middleware: false, method: "get" },
   { route: '/api/dashboard/stats', handler: _lazy_9fbOUn, lazy: true, middleware: false, method: "get" },
@@ -2711,6 +2691,7 @@ const handlers = [
   { route: '/api/products', handler: _lazy_8I_Q7M, lazy: true, middleware: false, method: "post" },
   { route: '/api/settings/password', handler: _lazy_BInWg0, lazy: true, middleware: false, method: "patch" },
   { route: '/api/users/:id', handler: _lazy_H7Op6B, lazy: true, middleware: false, method: "delete" },
+  { route: '/api/users/:id', handler: _lazy_Um2KmO, lazy: true, middleware: false, method: "patch" },
   { route: '/api/users', handler: _lazy_R0aSVu, lazy: true, middleware: false, method: "get" },
   { route: '/api/users', handler: _lazy_1OloWS, lazy: true, middleware: false, method: "post" },
   { route: '/__nuxt_error', handler: _lazy_IC7sdF, lazy: true, middleware: false, method: undefined },
@@ -3187,125 +3168,6 @@ const me_get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   default: me_get
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const _id__get$4 = defineEventHandler(async (event) => {
-  requireAuth(event);
-  const id = Number(getRouterParam(event, "id"));
-  if (!id) throw createError({ statusCode: 400, message: "\u7121\u6548\u7684\u8A02\u55AE ID" });
-  const order = await queryOne(`
-    SELECT
-      o.*,
-      u.name  AS user_name,
-      u.email AS user_email
-    FROM orders o
-    JOIN users u ON u.id = o.user_id
-    WHERE o.id = ?
-  `, [id]);
-  if (!order) throw createError({ statusCode: 404, message: "\u8A02\u55AE\u4E0D\u5B58\u5728" });
-  const items = await query(`
-    SELECT
-      oi.id, oi.qty, oi.unit_price, oi.subtotal,
-      p.name AS product_name,
-      p.sku
-    FROM order_items oi
-    JOIN products p ON p.id = oi.product_id
-    WHERE oi.order_id = ?
-  `, [id]);
-  return ok({ ...order, items });
-});
-
-const _id__get$5 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
-  __proto__: null,
-  default: _id__get$4
-}, Symbol.toStringTag, { value: 'Module' }));
-
-const _id__patch$4 = defineEventHandler(async (event) => {
-  var _a;
-  requireAdmin(event);
-  const q = getQuery$1(event);
-  const page = Math.max(1, Number(q.page) || 1);
-  const limit = Math.min(100, Number(q.limit) || 20);
-  const offset = (page - 1) * limit;
-  const search = q.search;
-  const role = q.role;
-  const conditions = [];
-  const params = [];
-  if (search) {
-    conditions.push("(name LIKE ? OR email LIKE ?)");
-    params.push(`%${search}%`, `%${search}%`);
-  }
-  if (role) {
-    conditions.push("role = ?");
-    params.push(role);
-  }
-  const where = conditions.length ? `WHERE ${conditions.join(" AND ")}` : "";
-  const rows = await query(`
-    SELECT id, name, email, role, is_active,
-           DATE_FORMAT(last_login,  '%Y-%m-%d %H:%i') AS last_login,
-           DATE_FORMAT(created_at,  '%Y-%m-%d')        AS created_at
-    FROM users
-    ${where}
-    ORDER BY created_at DESC
-    LIMIT ? OFFSET ?
-  `, [...params, limit, offset]);
-  const countRow = await queryOne(
-    `SELECT COUNT(*) AS total FROM users ${where}`,
-    params
-  );
-  return paginated(rows, (_a = countRow == null ? void 0 : countRow.total) != null ? _a : 0, page, limit);
-});
-
-const _id__patch$5 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
-  __proto__: null,
-  default: _id__patch$4
-}, Symbol.toStringTag, { value: 'Module' }));
-
-const index_get$8 = defineEventHandler(async (event) => {
-  var _a;
-  requireAuth(event);
-  const q = getQuery$1(event);
-  const page = Math.max(1, Number(q.page) || 1);
-  const limit = Math.min(100, Number(q.limit) || 20);
-  const offset = (page - 1) * limit;
-  const status = q.status;
-  const search = q.search;
-  const conditions = [];
-  const params = [];
-  if (status) {
-    conditions.push("o.status = ?");
-    params.push(status);
-  }
-  if (search) {
-    conditions.push("(o.order_no LIKE ? OR u.name LIKE ? OR u.email LIKE ?)");
-    const like = `%${search}%`;
-    params.push(like, like, like);
-  }
-  const where = conditions.length ? `WHERE ${conditions.join(" AND ")}` : "";
-  const rows = await query(`
-    SELECT
-      o.id, o.order_no, o.total, o.status, o.note,
-      DATE_FORMAT(o.created_at, '%Y-%m-%d %H:%i') AS created_at,
-      u.name  AS user_name,
-      u.email AS user_email
-    FROM orders o
-    JOIN users u ON u.id = o.user_id
-    ${where}
-    ORDER BY o.created_at DESC
-    LIMIT ? OFFSET ?
-  `, [...params, limit, offset]);
-  const countRow = await queryOne(`
-    SELECT COUNT(*) AS total
-    FROM orders o
-    JOIN users u ON u.id = o.user_id
-    ${where}
-  `, params);
-  return paginated(rows, (_a = countRow == null ? void 0 : countRow.total) != null ? _a : 0, page, limit);
-});
-
-const index_get$9 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
-  __proto__: null,
-  default: index_get$8
-}, Symbol.toStringTag, { value: 'Module' }));
-
 const index_get$6 = defineEventHandler(async (event) => {
   requireAuth(event);
   const rows = await query(`SELECT id, name FROM categories ORDER BY id`);
@@ -3492,7 +3354,7 @@ const _id__get$3 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty
 }, Symbol.toStringTag, { value: 'Module' }));
 
 const VALID_STATUSES = ["pending", "processing", "shipped", "done", "refund", "cancelled"];
-const _id__patch$2 = defineEventHandler(async (event) => {
+const _id__patch$4 = defineEventHandler(async (event) => {
   requireAuth(event);
   const id = Number(getRouterParam(event, "id"));
   const body = await readBody(event);
@@ -3518,9 +3380,9 @@ const _id__patch$2 = defineEventHandler(async (event) => {
   return ok(updated, "\u66F4\u65B0\u6210\u529F");
 });
 
-const _id__patch$3 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+const _id__patch$5 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
-  default: _id__patch$2
+  default: _id__patch$4
 }, Symbol.toStringTag, { value: 'Module' }));
 
 const export_get = defineEventHandler(async (event) => {
@@ -3634,7 +3496,7 @@ const _id__get$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty
   default: _id__get
 }, Symbol.toStringTag, { value: 'Module' }));
 
-const _id__patch = defineEventHandler(async (event) => {
+const _id__patch$2 = defineEventHandler(async (event) => {
   requireAuth(event);
   const id = Number(getRouterParam(event, "id"));
   const body = await readBody(event);
@@ -3654,9 +3516,9 @@ const _id__patch = defineEventHandler(async (event) => {
   return ok(null, "\u66F4\u65B0\u6210\u529F");
 });
 
-const _id__patch$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+const _id__patch$3 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
-  default: _id__patch
+  default: _id__patch$2
 }, Symbol.toStringTag, { value: 'Module' }));
 
 const index_get$2 = defineEventHandler(async (event) => {
@@ -3754,6 +3616,25 @@ const _id__delete = defineEventHandler(async (event) => {
 const _id__delete$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
   __proto__: null,
   default: _id__delete
+}, Symbol.toStringTag, { value: 'Module' }));
+
+const _id__patch = defineEventHandler(async (event) => {
+  var _a;
+  requireAuth(event);
+  const id = Number(getRouterParam(event, "id"));
+  const body = await readBody(event);
+  if (!id) fail("\u7121\u6548\u7684 ID");
+  if (!((_a = body.name) == null ? void 0 : _a.trim())) fail("\u540D\u5B57\u4E0D\u80FD\u70BA\u7A7A");
+  await queryOne(
+    `UPDATE users SET name = ? WHERE id = ?`,
+    [body.name.trim(), id]
+  );
+  return ok(null, "\u66F4\u65B0\u6210\u529F");
+});
+
+const _id__patch$1 = /*#__PURE__*/Object.freeze(/*#__PURE__*/Object.defineProperty({
+  __proto__: null,
+  default: _id__patch
 }, Symbol.toStringTag, { value: 'Module' }));
 
 const index_get = defineEventHandler(async (event) => {

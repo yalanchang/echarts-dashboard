@@ -11,16 +11,16 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg0:   '#07080d',
-        bg1:   '#0d1017',
-        bg2:   '#121620',
-        bg3:   '#181d2a',
-        bline: '#1e2536',
-        c1:    '#3bffa0',
-        c2:    '#ff6b6b',
-        c3:    '#ffd166',
-        c4:    '#74b9ff',
-        c5:    '#a29bfe',
+        bg0:   'var(--bg0)',
+        bg1:   'var(--bg1)',
+        bg2:   'var(--bg2)',
+        bg3:   'var(--bg3)',
+        bline: 'var(--bline)',
+        c1:    'var(--c1)',
+        c2:    'var(--c2)',
+        c3:    'var(--c3)',
+        c4:    'var(--c4)',
+        c5:    'var(--c5)',
       },
       fontFamily: {
         sans: ['DM Sans', 'sans-serif'],

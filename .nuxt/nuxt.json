@@ -1,7 +1,7 @@
 {
-  "_hash": "ZQSz00GSjdjFYc1JrUk_xlrXu70AuiN6YbubuJSRRk0",
+  "_hash": "6YN2RnIXZvQmeLp52RIdcizuDiGtITB1jk12J8884Iw",
   "project": {
-    "rootDir": "/Users/zhangyalan/echart/echart"
+    "rootDir": "/Users/zhangyalan/echart/echarts-dashboard-1"
   },
   "versions": {
     "nuxt": "3.21.1"

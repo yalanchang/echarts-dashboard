@@ -1,45 +1,45 @@
 import process from 'node:process';globalThis._importMeta_={url:import.meta.url,env:process.env};import { tmpdir } from 'node:os';
-import { defineEventHandler, handleCacheHeaders, splitCookiesString, createEvent, fetchWithEvent, isEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, getRequestHeader, setResponseHeaders, setResponseStatus, send, getRequestHeaders, setResponseHeader, appendResponseHeader, getRequestURL, getResponseHeader, removeResponseHeader, createError, getHeader, getCookie, getQuery as getQuery$1, readBody, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getResponseStatus, getRouterParam, setCookie, deleteCookie, setHeader, getResponseStatusText } from 'file:///Users/zhangyalan/echart/echart/node_modules/h3/dist/index.mjs';
+import { defineEventHandler, handleCacheHeaders, splitCookiesString, createEvent, fetchWithEvent, isEvent, eventHandler, setHeaders, sendRedirect, proxyRequest, getRequestHeader, setResponseHeaders, setResponseStatus, send, getRequestHeaders, setResponseHeader, appendResponseHeader, getRequestURL, getResponseHeader, removeResponseHeader, createError, getHeader, getCookie, getQuery as getQuery$1, readBody, createApp, createRouter as createRouter$1, toNodeListener, lazyEventHandler, getResponseStatus, getRouterParam, setCookie, deleteCookie, setHeader, getResponseStatusText } from 'file:///Users/zhangyalan/echart/echarts-dashboard-1/node_modules/h3/dist/index.mjs';
 import { Server } from 'node:http';
 import { resolve, dirname, join } from 'node:path';
 import nodeCrypto from 'node:crypto';
 import { parentPort, threadId } from 'node:worker_threads';
-import { escapeHtml } from 'file:///Users/zhangyalan/echart/echart/node_modules/@vue/shared/dist/shared.cjs.js';
-import bcrypt from 'file:///Users/zhangyalan/echart/echart/node_modules/bcryptjs/index.js';
-import mysql from 'file:///Users/zhangyalan/echart/echart/node_modules/mysql2/promise.js';
-import { createRenderer, getRequestDependencies, getPreloadLinks, getPrefetchLinks } from 'file:///Users/zhangyalan/echart/echart/node_modules/vue-bundle-renderer/dist/runtime.mjs';
-import { parseURL, withoutBase, joinURL, getQuery, withQuery, withTrailingSlash, decodePath, withLeadingSlash, withoutTrailingSlash, joinRelativeURL } from 'file:///Users/zhangyalan/echart/echart/node_modules/ufo/dist/index.mjs';
-import { renderToString } from 'file:///Users/zhangyalan/echart/echart/node_modules/vue/server-renderer/index.mjs';
-import destr, { destr as destr$1 } from 'file:///Users/zhangyalan/echart/echart/node_modules/destr/dist/index.mjs';
-import { createHooks } from 'file:///Users/zhangyalan/echart/echart/node_modules/hookable/dist/index.mjs';
-import { createFetch, Headers as Headers$1 } from 'file:///Users/zhangyalan/echart/echart/node_modules/ofetch/dist/node.mjs';
-import { fetchNodeRequestHandler, callNodeRequestHandler } from 'file:///Users/zhangyalan/echart/echart/node_modules/node-mock-http/dist/index.mjs';
-import { createStorage, prefixStorage } from 'file:///Users/zhangyalan/echart/echart/node_modules/unstorage/dist/index.mjs';
-import unstorage_47drivers_47fs from 'file:///Users/zhangyalan/echart/echart/node_modules/unstorage/drivers/fs.mjs';
-import { digest } from 'file:///Users/zhangyalan/echart/echart/node_modules/ohash/dist/index.mjs';
-import { klona } from 'file:///Users/zhangyalan/echart/echart/node_modules/klona/dist/index.mjs';
-import defu, { defuFn } from 'file:///Users/zhangyalan/echart/echart/node_modules/defu/dist/defu.mjs';
-import { snakeCase } from 'file:///Users/zhangyalan/echart/echart/node_modules/scule/dist/index.mjs';
-import { getContext } from 'file:///Users/zhangyalan/echart/echart/node_modules/unctx/dist/index.mjs';
-import { toRouteMatcher, createRouter } from 'file:///Users/zhangyalan/echart/echart/node_modules/radix3/dist/index.mjs';
+import { escapeHtml } from 'file:///Users/zhangyalan/echart/echarts-dashboard-1/node_modules/@vue/shared/dist/shared.cjs.js';
+import bcrypt from 'file:///Users/zhangyalan/echart/echarts-dashboard-1/node_modules/bcryptjs/index.js';
+import mysql from 'file:///Users/zhangyalan/echart/echarts-dashboard-1/node_modules/mysql2/promise.js';
+import { createRenderer, getRequestDependencies, getPreloadLinks, getPrefetchLinks } from 'file:///Users/zhangyalan/echart/echarts-dashboard-1/node_modules/vue-bundle-renderer/dist/runtime.mjs';
+import { parseURL, withoutBase, joinURL, getQuery, withQuery, withTrailingSlash, decodePath, withLeadingSlash, withoutTrailingSlash, joinRelativeURL } from 'file:///Users/zhangyalan/echart/echarts-dashboard-1/node_modules/ufo/dist/index.mjs';
+import { renderToString } from 'file:///Users/zhangyalan/echart/echarts-dashboard-1/node_modules/vue/server-renderer/index.mjs';
+import destr, { destr as destr$1 } from 'file:///Users/zhangyalan/echart/echarts-dashboard-1/node_modules/destr/dist/index.mjs';
+import { createHooks } from 'file:///Users/zhangyalan/echart/echarts-dashboard-1/node_modules/hookable/dist/index.mjs';
+import { createFetch, Headers as Headers$1 } from 'file:///Users/zhangyalan/echart/echarts-dashboard-1/node_modules/ofetch/dist/node.mjs';
+import { fetchNodeRequestHandler, callNodeRequestHandler } from 'file:///Users/zhangyalan/echart/echarts-dashboard-1/node_modules/node-mock-http/dist/index.mjs';
+import { createStorage, prefixStorage } from 'file:///Users/zhangyalan/echart/echarts-dashboard-1/node_modules/unstorage/dist/index.mjs';
+import unstorage_47drivers_47fs from 'file:///Users/zhangyalan/echart/echarts-dashboard-1/node_modules/unstorage/drivers/fs.mjs';
+import { digest } from 'file:///Users/zhangyalan/echart/echarts-dashboard-1/node_modules/ohash/dist/index.mjs';
+import { klona } from 'file:///Users/zhangyalan/echart/echarts-dashboard-1/node_modules/klona/dist/index.mjs';
+import defu, { defuFn } from 'file:///Users/zhangyalan/echart/echarts-dashboard-1/node_modules/defu/dist/defu.mjs';
+import { snakeCase } from 'file:///Users/zhangyalan/echart/echarts-dashboard-1/node_modules/scule/dist/index.mjs';
+import { getContext } from 'file:///Users/zhangyalan/echart/echarts-dashboard-1/node_modules/unctx/dist/index.mjs';
+import { toRouteMatcher, createRouter } from 'file:///Users/zhangyalan/echart/echarts-dashboard-1/node_modules/radix3/dist/index.mjs';
 import { readFile } from 'node:fs/promises';
-import consola, { consola as consola$1 } from 'file:///Users/zhangyalan/echart/echart/node_modules/consola/dist/index.mjs';
-import { ErrorParser } from 'file:///Users/zhangyalan/echart/echart/node_modules/youch-core/build/index.js';
-import { Youch } from 'file:///Users/zhangyalan/echart/echart/node_modules/youch/build/index.js';
-import { SourceMapConsumer } from 'file:///Users/zhangyalan/echart/echart/node_modules/source-map/source-map.js';
+import consola, { consola as consola$1 } from 'file:///Users/zhangyalan/echart/echarts-dashboard-1/node_modules/consola/dist/index.mjs';
+import { ErrorParser } from 'file:///Users/zhangyalan/echart/echarts-dashboard-1/node_modules/youch-core/build/index.js';
+import { Youch } from 'file:///Users/zhangyalan/echart/echarts-dashboard-1/node_modules/youch/build/index.js';
+import { SourceMapConsumer } from 'file:///Users/zhangyalan/echart/echarts-dashboard-1/node_modules/source-map/source-map.js';
 import { AsyncLocalStorage } from 'node:async_hooks';
-import { stringify, uneval } from 'file:///Users/zhangyalan/echart/echart/node_modules/devalue/index.js';
-import { captureRawStackTrace, parseRawStackTrace } from 'file:///Users/zhangyalan/echart/echart/node_modules/errx/dist/index.js';
-import { isVNode, isRef, toValue } from 'file:///Users/zhangyalan/echart/echart/node_modules/vue/index.mjs';
+import { stringify, uneval } from 'file:///Users/zhangyalan/echart/echarts-dashboard-1/node_modules/devalue/index.js';
+import { captureRawStackTrace, parseRawStackTrace } from 'file:///Users/zhangyalan/echart/echarts-dashboard-1/node_modules/errx/dist/index.js';
+import { isVNode, isRef, toValue } from 'file:///Users/zhangyalan/echart/echarts-dashboard-1/node_modules/vue/index.mjs';
 import { promises } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import { dirname as dirname$1, resolve as resolve$1 } from 'file:///Users/zhangyalan/echart/echart/node_modules/pathe/dist/index.mjs';
-import jwt from 'file:///Users/zhangyalan/echart/echart/node_modules/jsonwebtoken/index.js';
-import { createHead as createHead$1, propsToString, renderSSRHead } from 'file:///Users/zhangyalan/echart/echart/node_modules/unhead/dist/server.mjs';
-import { DeprecationsPlugin, PromisesPlugin, TemplateParamsPlugin, AliasSortingPlugin } from 'file:///Users/zhangyalan/echart/echart/node_modules/unhead/dist/plugins.mjs';
-import { walkResolver } from 'file:///Users/zhangyalan/echart/echart/node_modules/unhead/dist/utils.mjs';
+import { dirname as dirname$1, resolve as resolve$1 } from 'file:///Users/zhangyalan/echart/echarts-dashboard-1/node_modules/pathe/dist/index.mjs';
+import jwt from 'file:///Users/zhangyalan/echart/echarts-dashboard-1/node_modules/jsonwebtoken/index.js';
+import { createHead as createHead$1, propsToString, renderSSRHead } from 'file:///Users/zhangyalan/echart/echarts-dashboard-1/node_modules/unhead/dist/server.mjs';
+import { DeprecationsPlugin, PromisesPlugin, TemplateParamsPlugin, AliasSortingPlugin } from 'file:///Users/zhangyalan/echart/echarts-dashboard-1/node_modules/unhead/dist/plugins.mjs';
+import { walkResolver } from 'file:///Users/zhangyalan/echart/echarts-dashboard-1/node_modules/unhead/dist/utils.mjs';
 
-const serverAssets = [{"baseName":"server","dir":"/Users/zhangyalan/echart/echart/server/assets"}];
+const serverAssets = [{"baseName":"server","dir":"/Users/zhangyalan/echart/echarts-dashboard-1/server/assets"}];
 
 const assets$1 = createStorage();
 
@@ -51,11 +51,11 @@ const storage = createStorage({});
 
 storage.mount('/assets', assets$1);
 
-storage.mount('root', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/zhangyalan/echart/echart","watchOptions":{"ignored":[null]}}));
-storage.mount('src', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/zhangyalan/echart/echart/server","watchOptions":{"ignored":[null]}}));
-storage.mount('build', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/Users/zhangyalan/echart/echart/.nuxt"}));
-storage.mount('cache', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/Users/zhangyalan/echart/echart/.nuxt/cache"}));
-storage.mount('data', unstorage_47drivers_47fs({"driver":"fs","base":"/Users/zhangyalan/echart/echart/.data/kv"}));
+storage.mount('root', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/zhangyalan/echart/echarts-dashboard-1","watchOptions":{"ignored":[null]}}));
+storage.mount('src', unstorage_47drivers_47fs({"driver":"fs","readOnly":true,"base":"/Users/zhangyalan/echart/echarts-dashboard-1/server","watchOptions":{"ignored":[null]}}));
+storage.mount('build', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/Users/zhangyalan/echart/echarts-dashboard-1/.nuxt"}));
+storage.mount('cache', unstorage_47drivers_47fs({"driver":"fs","readOnly":false,"base":"/Users/zhangyalan/echart/echarts-dashboard-1/.nuxt/cache"}));
+storage.mount('data', unstorage_47drivers_47fs({"driver":"fs","base":"/Users/zhangyalan/echart/echarts-dashboard-1/.data/kv"}));
 
 function useStorage(base = "") {
   return base ? prefixStorage(storage, base) : storage;
@@ -645,7 +645,7 @@ const _inlineRuntimeConfig = {
           "access-control-allow-methods": "*",
           "access-control-allow-headers": "*",
           "access-control-max-age": "0",
-          "Access-Control-Allow-Origin": "https://admin.yourcompany.com",
+          "Access-Control-Allow-Origin": "*",
           "Access-Control-Allow-Methods": "GET, POST, PUT, DELETE, OPTIONS",
           "Access-Control-Allow-Headers": "Content-Type, Authorization",
           "Access-Control-Allow-Credentials": "true"
@@ -668,12 +668,12 @@ const _inlineRuntimeConfig = {
     "appVersion": "1.0.0",
     "apiBase": "/api"
   },
-  "dbHost": "127.0.0.1",
+  "dbHost": "bjctbw5lxnk4zzorrjzk-mysql.services.clever-cloud.com",
   "dbPort": "3306",
-  "dbUser": "root",
-  "dbPass": "",
-  "dbName": "admin_db",
-  "jwtSecret": "821b32ff04a0edd540ae6940351b5be65300a4b78f9b4c4135d4a242044c20f8"
+  "dbUser": "uqb9xz4smqrjsan6",
+  "dbPass": "nZsPdKWAw1tNENquLAiS",
+  "dbName": "bjctbw5lxnk4zzorrjzk",
+  "jwtSecret": "你的secret"
 };
 const envOptions = {
   prefix: "NITRO_",
@@ -2051,13 +2051,13 @@ if (!window.__NUXT_DEVTOOLS_TIME_METRIC__) {
 window.__NUXT_DEVTOOLS_TIME_METRIC__.appInit = Date.now()
 `;
 
-const _hhRrqWPSxHFH9vNM2IsVafsLmxJ0yTXJvV9cz43Dl6E = (function(nitro) {
+const _uUArTMHR0oNS92QLHzpZpLWgeUKl2hlhuJQx6vf2qE = (function(nitro) {
   nitro.hooks.hook("render:html", (htmlContext) => {
     htmlContext.head.push(`<script>${script}<\/script>`);
   });
 });
 
-const rootDir = "/Users/zhangyalan/echart/echart";
+const rootDir = "/Users/zhangyalan/echart/echarts-dashboard-1";
 
 const appHead = {"meta":[{"charset":"utf-8"},{"name":"viewport","content":"width=device-width, initial-scale=1"},{"name":"robots","content":"noindex, nofollow"}],"link":[],"style":[],"script":[],"noscript":[],"title":"DataPulse Admin"};
 
@@ -2082,7 +2082,7 @@ const asyncContext = getContext("nuxt-dev", {
 	asyncContext: true,
 	AsyncLocalStorage
 });
-const _AUpb5PPp7qlF8tqHCyRdp5_shHgYUbteBzuXgCoKI = (nitroApp) => {
+const _WJvWJJJtoK1jzN31x2e37Wj2zPevP56muCTI2OKuk = (nitroApp) => {
 	const handler = nitroApp.h3App.handler;
 	nitroApp.h3App.handler = (event) => {
 		return asyncContext.callAsync({
@@ -2156,26 +2156,11 @@ function onConsoleLog(callback) {
 }
 
 const plugins = [
-  _hhRrqWPSxHFH9vNM2IsVafsLmxJ0yTXJvV9cz43Dl6E,
-_AUpb5PPp7qlF8tqHCyRdp5_shHgYUbteBzuXgCoKI
+  _uUArTMHR0oNS92QLHzpZpLWgeUKl2hlhuJQx6vf2qE,
+_WJvWJJJtoK1jzN31x2e37Wj2zPevP56muCTI2OKuk
 ];
 
-const assets = {
-  "/index.mjs": {
-    "type": "text/javascript; charset=utf-8",
-    "etag": "\"21e22-8TUi1rKD5JfqSWmDuCh5G8FD+cc\"",
-    "mtime": "2026-03-06T16:23:28.918Z",
-    "size": 138786,
-    "path": "index.mjs"
-  },
-  "/index.mjs.map": {
-    "type": "application/json",
-    "etag": "\"8110a-elEJfM/yG9wfSWJ/qzF+0ioNllo\"",
-    "mtime": "2026-03-06T16:23:28.919Z",
-    "size": 528650,
-    "path": "index.mjs.map"
-  }
-};
+const assets = {};
 
 function readAsset (id) {
   const serverDir = dirname$1(fileURLToPath(globalThis._importMeta_.url));
@@ -2200,7 +2185,7 @@ function getAsset (id) {
 
 const METHODS = /* @__PURE__ */ new Set(["HEAD", "GET"]);
 const EncodingMap = { gzip: ".gz", br: ".br" };
-const _fudnJ7 = eventHandler((event) => {
+const _ISB7OL = eventHandler((event) => {
   if (event.method && !METHODS.has(event.method)) {
     return;
   }
@@ -2298,7 +2283,7 @@ function requireAdmin(event) {
   return user;
 }
 
-const _GQ02Ne = defineEventHandler((event) => {
+const _sS4SXu = defineEventHandler((event) => {
   const url = getRequestURL(event).pathname;
   if (!url.startsWith("/api/admin/")) return;
   const user = getAuthUser(event);
@@ -2388,7 +2373,7 @@ const APP_ROOT_CLOSE_TAG = `</${appRootTag}>`;
 // @ts-expect-error file will be produced after app build
 const getServerEntry = () => Promise.resolve().then(function () { return server$1; }).then((r) => r.default || r);
 // @ts-expect-error file will be produced after app build
-const getClientManifest = () => import('file:///Users/zhangyalan/echart/echart/.nuxt//dist/server/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
+const getClientManifest = () => import('file:///Users/zhangyalan/echart/echarts-dashboard-1/.nuxt//dist/server/client.manifest.mjs').then((r) => r.default || r).then((r) => typeof r === "function" ? r() : r);
 // -- SSR Renderer --
 const getSSRRenderer = lazyCachedFunction(async () => {
 	// Load server bundle
@@ -2668,62 +2653,62 @@ async function getIslandContext(event) {
 	return ctx;
 }
 
-const _lazy_N2Ksfq = () => Promise.resolve().then(function () { return login_post$1; });
-const _lazy_ljJmMd = () => Promise.resolve().then(function () { return logout_post$1; });
-const _lazy_hKcBvB = () => Promise.resolve().then(function () { return me_get$1; });
-const _lazy_su52_a = () => Promise.resolve().then(function () { return index_get$7; });
-const _lazy_X_JwDr = () => Promise.resolve().then(function () { return revenue_get$1; });
-const _lazy_9fbOUn = () => Promise.resolve().then(function () { return stats_get$1; });
-const _lazy_Rd3j9M = () => Promise.resolve().then(function () { return health_get$1; });
-const _lazy_DIhmp6 = () => Promise.resolve().then(function () { return _id__get$3; });
-const _lazy_DnmcYw = () => Promise.resolve().then(function () { return _id__patch$5; });
-const _lazy_FpqmGl = () => Promise.resolve().then(function () { return export_get$1; });
-const _lazy_0SON7j = () => Promise.resolve().then(function () { return index_get$5; });
-const _lazy_7cF4u7 = () => Promise.resolve().then(function () { return index_post$5; });
-const _lazy_LHutRA = () => Promise.resolve().then(function () { return _id__get$1; });
-const _lazy_mCtcvQ = () => Promise.resolve().then(function () { return _id__patch$3; });
-const _lazy_NXD0Bq = () => Promise.resolve().then(function () { return index_get$3; });
-const _lazy_8I_Q7M = () => Promise.resolve().then(function () { return index_post$3; });
-const _lazy_BInWg0 = () => Promise.resolve().then(function () { return password_patch$1; });
-const _lazy_zXGDbP = () => Promise.resolve().then(function () { return testBcrypt$1; });
-const _lazy_QO7AGM = () => Promise.resolve().then(function () { return testDb$1; });
-const _lazy_oGTtLD = () => Promise.resolve().then(function () { return testLogin$1; });
-const _lazy_H7Op6B = () => Promise.resolve().then(function () { return _id__delete$1; });
-const _lazy_Um2KmO = () => Promise.resolve().then(function () { return _id__patch$1; });
-const _lazy_R0aSVu = () => Promise.resolve().then(function () { return index_get$1; });
-const _lazy_1OloWS = () => Promise.resolve().then(function () { return index_post$1; });
-const _lazy_IC7sdF = () => Promise.resolve().then(function () { return renderer$1; });
+const _lazy_dLOg6T = () => Promise.resolve().then(function () { return login_post$1; });
+const _lazy_mT5gi7 = () => Promise.resolve().then(function () { return logout_post$1; });
+const _lazy_kRy2vb = () => Promise.resolve().then(function () { return me_get$1; });
+const _lazy_rZFT2u = () => Promise.resolve().then(function () { return index_get$7; });
+const _lazy_KHR3cX = () => Promise.resolve().then(function () { return revenue_get$1; });
+const _lazy_6FUj_G = () => Promise.resolve().then(function () { return stats_get$1; });
+const _lazy_oz232f = () => Promise.resolve().then(function () { return health_get$1; });
+const _lazy_2rsp5S = () => Promise.resolve().then(function () { return _id__get$3; });
+const _lazy_T1hDjK = () => Promise.resolve().then(function () { return _id__patch$5; });
+const _lazy_6Zdbks = () => Promise.resolve().then(function () { return export_get$1; });
+const _lazy_tUYZya = () => Promise.resolve().then(function () { return index_get$5; });
+const _lazy_XBpMOH = () => Promise.resolve().then(function () { return index_post$5; });
+const _lazy_hxfvmg = () => Promise.resolve().then(function () { return _id__get$1; });
+const _lazy_3CIm9G = () => Promise.resolve().then(function () { return _id__patch$3; });
+const _lazy_4F0Sch = () => Promise.resolve().then(function () { return index_get$3; });
+const _lazy_fp7hzw = () => Promise.resolve().then(function () { return index_post$3; });
+const _lazy_9GYwa3 = () => Promise.resolve().then(function () { return password_patch$1; });
+const _lazy_QT0PUU = () => Promise.resolve().then(function () { return testBcrypt$1; });
+const _lazy_ZqsRMn = () => Promise.resolve().then(function () { return testDb$1; });
+const _lazy_FmjgfG = () => Promise.resolve().then(function () { return testLogin$1; });
+const _lazy_RI83WS = () => Promise.resolve().then(function () { return _id__delete$1; });
+const _lazy_1Oundu = () => Promise.resolve().then(function () { return _id__patch$1; });
+const _lazy_Qj9zLT = () => Promise.resolve().then(function () { return index_get$1; });
+const _lazy_3OacmL = () => Promise.resolve().then(function () { return index_post$1; });
+const _lazy_ZYe86z = () => Promise.resolve().then(function () { return renderer$1; });
 
 const handlers = [
-  { route: '', handler: _fudnJ7, lazy: false, middleware: true, method: undefined },
-  { route: '', handler: _GQ02Ne, lazy: false, middleware: true, method: undefined },
-  { route: '/api/auth/login', handler: _lazy_N2Ksfq, lazy: true, middleware: false, method: "post" },
-  { route: '/api/auth/logout', handler: _lazy_ljJmMd, lazy: true, middleware: false, method: "post" },
-  { route: '/api/auth/me', handler: _lazy_hKcBvB, lazy: true, middleware: false, method: "get" },
-  { route: '/api/categories', handler: _lazy_su52_a, lazy: true, middleware: false, method: "get" },
-  { route: '/api/charts/revenue', handler: _lazy_X_JwDr, lazy: true, middleware: false, method: "get" },
-  { route: '/api/dashboard/stats', handler: _lazy_9fbOUn, lazy: true, middleware: false, method: "get" },
-  { route: '/api/health', handler: _lazy_Rd3j9M, lazy: true, middleware: false, method: "get" },
-  { route: '/api/orders/:id', handler: _lazy_DIhmp6, lazy: true, middleware: false, method: "get" },
-  { route: '/api/orders/:id', handler: _lazy_DnmcYw, lazy: true, middleware: false, method: "patch" },
-  { route: '/api/orders/export', handler: _lazy_FpqmGl, lazy: true, middleware: false, method: "get" },
-  { route: '/api/orders', handler: _lazy_0SON7j, lazy: true, middleware: false, method: "get" },
-  { route: '/api/orders', handler: _lazy_7cF4u7, lazy: true, middleware: false, method: "post" },
-  { route: '/api/products/:id', handler: _lazy_LHutRA, lazy: true, middleware: false, method: "get" },
-  { route: '/api/products/:id', handler: _lazy_mCtcvQ, lazy: true, middleware: false, method: "patch" },
-  { route: '/api/products', handler: _lazy_NXD0Bq, lazy: true, middleware: false, method: "get" },
-  { route: '/api/products', handler: _lazy_8I_Q7M, lazy: true, middleware: false, method: "post" },
-  { route: '/api/settings/password', handler: _lazy_BInWg0, lazy: true, middleware: false, method: "patch" },
-  { route: '/api/test-bcrypt', handler: _lazy_zXGDbP, lazy: true, middleware: false, method: undefined },
-  { route: '/api/test-db', handler: _lazy_QO7AGM, lazy: true, middleware: false, method: undefined },
-  { route: '/api/test-login', handler: _lazy_oGTtLD, lazy: true, middleware: false, method: undefined },
-  { route: '/api/users/:id', handler: _lazy_H7Op6B, lazy: true, middleware: false, method: "delete" },
-  { route: '/api/users/:id', handler: _lazy_Um2KmO, lazy: true, middleware: false, method: "patch" },
-  { route: '/api/users', handler: _lazy_R0aSVu, lazy: true, middleware: false, method: "get" },
-  { route: '/api/users', handler: _lazy_1OloWS, lazy: true, middleware: false, method: "post" },
-  { route: '/__nuxt_error', handler: _lazy_IC7sdF, lazy: true, middleware: false, method: undefined },
+  { route: '', handler: _ISB7OL, lazy: false, middleware: true, method: undefined },
+  { route: '', handler: _sS4SXu, lazy: false, middleware: true, method: undefined },
+  { route: '/api/auth/login', handler: _lazy_dLOg6T, lazy: true, middleware: false, method: "post" },
+  { route: '/api/auth/logout', handler: _lazy_mT5gi7, lazy: true, middleware: false, method: "post" },
+  { route: '/api/auth/me', handler: _lazy_kRy2vb, lazy: true, middleware: false, method: "get" },
+  { route: '/api/categories', handler: _lazy_rZFT2u, lazy: true, middleware: false, method: "get" },
+  { route: '/api/charts/revenue', handler: _lazy_KHR3cX, lazy: true, middleware: false, method: "get" },
+  { route: '/api/dashboard/stats', handler: _lazy_6FUj_G, lazy: true, middleware: false, method: "get" },
+  { route: '/api/health', handler: _lazy_oz232f, lazy: true, middleware: false, method: "get" },
+  { route: '/api/orders/:id', handler: _lazy_2rsp5S, lazy: true, middleware: false, method: "get" },
+  { route: '/api/orders/:id', handler: _lazy_T1hDjK, lazy: true, middleware: false, method: "patch" },
+  { route: '/api/orders/export', handler: _lazy_6Zdbks, lazy: true, middleware: false, method: "get" },
+  { route: '/api/orders', handler: _lazy_tUYZya, lazy: true, middleware: false, method: "get" },
+  { route: '/api/orders', handler: _lazy_XBpMOH, lazy: true, middleware: false, method: "post" },
+  { route: '/api/products/:id', handler: _lazy_hxfvmg, lazy: true, middleware: false, method: "get" },
+  { route: '/api/products/:id', handler: _lazy_3CIm9G, lazy: true, middleware: false, method: "patch" },
+  { route: '/api/products', handler: _lazy_4F0Sch, lazy: true, middleware: false, method: "get" },
+  { route: '/api/products', handler: _lazy_fp7hzw, lazy: true, middleware: false, method: "post" },
+  { route: '/api/settings/password', handler: _lazy_9GYwa3, lazy: true, middleware: false, method: "patch" },
+  { route: '/api/test-bcrypt', handler: _lazy_QT0PUU, lazy: true, middleware: false, method: undefined },
+  { route: '/api/test-db', handler: _lazy_ZqsRMn, lazy: true, middleware: false, method: undefined },
+  { route: '/api/test-login', handler: _lazy_FmjgfG, lazy: true, middleware: false, method: undefined },
+  { route: '/api/users/:id', handler: _lazy_RI83WS, lazy: true, middleware: false, method: "delete" },
+  { route: '/api/users/:id', handler: _lazy_1Oundu, lazy: true, middleware: false, method: "patch" },
+  { route: '/api/users', handler: _lazy_Qj9zLT, lazy: true, middleware: false, method: "get" },
+  { route: '/api/users', handler: _lazy_3OacmL, lazy: true, middleware: false, method: "post" },
+  { route: '/__nuxt_error', handler: _lazy_ZYe86z, lazy: true, middleware: false, method: undefined },
   { route: '/__nuxt_island/**', handler: _SxA8c9, lazy: false, middleware: false, method: undefined },
-  { route: '/**', handler: _lazy_IC7sdF, lazy: true, middleware: false, method: undefined }
+  { route: '/**', handler: _lazy_ZYe86z, lazy: true, middleware: false, method: undefined }
 ];
 
 function createNitroApp() {
@@ -3082,22 +3067,17 @@ function getPool() {
     database: config.dbName,
     charset: "utf8mb4",
     waitForConnections: true,
-    connectionLimit: 5,
-    queueLimit: 0,
+    connectionLimit: 2,
+    queueLimit: 5,
     enableKeepAlive: true,
-    keepAliveInitialDelay: 0,
-    // 加入 SSL 配置 
-    ssl: {
-      rejectUnauthorized: false
-      // Clever Cloud 需要這個設定來接受他們的自簽 SSL 證書
-    }
+    keepAliveInitialDelay: 0
   });
   return pool;
 }
 async function query(sql, params) {
   try {
-    const result = await getPool().execute(sql, params);
-    return result[0];
+    const [rows] = await getPool().query(sql, params);
+    return rows;
   } catch (error) {
     console.error("Query error:", error);
     throw error;
@@ -3106,8 +3086,7 @@ async function query(sql, params) {
 async function queryOne(sql, params) {
   var _a;
   try {
-    const result = await getPool().execute(sql, params);
-    const rows = result[0];
+    const [rows] = await getPool().query(sql, params);
     return (_a = rows[0]) != null ? _a : null;
   } catch (error) {
     console.error("QueryOne error:", error);

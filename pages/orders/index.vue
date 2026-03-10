@@ -101,19 +101,58 @@ const statusOptions = [
       </select>
     </div>
 
-    <DataTable :columns="columns" :rows="orders" :loading="loading"  @row-click="goToOrder"
-    
+    <!-- 手機版卡片 -->
+    <div class="md:hidden space-y-2">
+      <div
+        v-if="loading"
+        class="text-center py-10 text-xs text-gray-500"
       >
-      <template #cell-total="{ value }">
-        <span class="font-mono text-c3">${{ Number(value).toLocaleString() }}</span>
-      </template>
-      <template #cell-status="{ value }">
-        <StatusBadge :status="(value as string)" />
-      </template>
-      <template #cell-order_no="{ value }">
-        <span class="font-mono text-c4">{{ value }}</span>
-      </template>
-    </DataTable>
+        載入中...
+      </div>
+      <div
+        v-else-if="orders.length === 0"
+        class="text-center py-10 text-xs text-gray-500"
+      >
+        沒有訂單
+      </div>
+      <div
+        v-for="row in orders"
+        :key="row.id"
+        class="rounded-xl border border-bline bg-bg1 p-3 cursor-pointer
+               hover:border-c1 transition"
+        @click="goToOrder(row)"
+      >
+        <div class="flex items-center justify-between mb-2">
+          <span class="font-mono text-c4 text-xs">{{ row.order_no }}</span>
+          <StatusBadge :status="row.status" />
+        </div>
+        <div class="flex items-center justify-between">
+          <div>
+            <div class="text-xs font-medium">{{ row.user_name }}</div>
+            <div class="text-[11px] text-gray-500 mt-0.5">{{ row.user_email }}</div>
+          </div>
+          <div class="text-right">
+            <div class="font-mono text-c3 text-sm">${{ Number(row.total).toLocaleString() }}</div>
+            <div class="text-[11px] text-gray-500 mt-0.5">{{ row.created_at }}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 桌機版表格 -->
+    <div class="hidden md:block">
+      <DataTable :columns="columns" :rows="orders" :loading="loading" @row-click="goToOrder">
+        <template #cell-total="{ value }">
+          <span class="font-mono text-c3">${{ Number(value).toLocaleString() }}</span>
+        </template>
+        <template #cell-status="{ value }">
+          <StatusBadge :status="(value as string)" />
+        </template>
+        <template #cell-order_no="{ value }">
+          <span class="font-mono text-c4">{{ value }}</span>
+        </template>
+      </DataTable>
+    </div>
 
     <div class="mt-3 flex items-center justify-between text-xs text-gray-500">
       <span>第 {{ page }} / {{ totalPages }} 頁，共 {{ total }} 筆</span>

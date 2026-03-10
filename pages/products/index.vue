@@ -80,38 +80,90 @@ watch([page, search], () => { if (import.meta.client) fetchProducts() })
       >
     </div>
 
-    <DataTable :columns="columns" :rows="products" :loading="loading">
-      <template #cell-price="{ value }">
-        <span class="font-mono text-c3">${{ Number(value).toLocaleString() }}</span>
-      </template>
-      <template #cell-stock="{ value }">
-        <span :class="Number(value) <= 10 ? 'text-c2' : 'text-c1'" class="font-mono">
-          {{ value }}
-        </span>
-      </template>
-      <template #cell-is_active="{ value }">
-        <span :class="value ? 'text-c1' : 'text-c2'">
-          {{ value ? '● 上架' : '○ 下架' }}
-        </span>
-      </template>
-      <template #cell-actions="{ row }">
-        <div class="flex gap-2">
+    <!-- 手機版卡片 -->
+    <div class="md:hidden space-y-2">
+      <div v-if="loading" class="text-center py-10 text-xs text-gray-500">載入中...</div>
+      <div v-else-if="products.length === 0" class="text-center py-10 text-xs text-gray-500">沒有商品</div>
+      <div
+        v-for="row in products"
+        :key="row.id"
+        class="rounded-xl border border-bline bg-bg1 p-3"
+      >
+        <!-- 頂部：名稱 + 狀態 -->
+        <div class="flex items-start justify-between mb-2">
+          <div>
+            <div class="text-xs font-medium">{{ row.name }}</div>
+            <div class="text-[11px] text-gray-500 font-mono mt-0.5">{{ row.sku }}</div>
+          </div>
+          <span :class="row.is_active ? 'text-c1' : 'text-c2'" class="text-[11px] shrink-0 ml-2">
+            {{ row.is_active ? '● 上架' : '○ 下架' }}
+          </span>
+        </div>
+
+        <!-- 中部：分類、售價、庫存 -->
+        <div class="flex items-center gap-3 text-[11px] mb-3">
+          <span class="text-gray-500">{{ row.category }}</span>
+          <span class="font-mono text-c3">${{ Number(row.price).toLocaleString() }}</span>
+          <span :class="Number(row.stock) <= 10 ? 'text-c2' : 'text-c1'" class="font-mono">
+            庫存 {{ row.stock }}
+          </span>
+        </div>
+
+        <!-- 底部操作 -->
+        <div class="flex gap-2 pt-2 border-t border-bline">
           <button
-            class="text-xs text-c4 hover:brightness-125 transition"
-            @click.stop="router.push('/products/' + row.id)"
+            class="flex-1 rounded-lg border border-bline py-1.5 text-xs text-c4
+                   hover:border-c4 transition"
+            @click="router.push('/products/' + row.id)"
           >
             編輯
           </button>
           <button
-            class="text-xs hover:brightness-125 transition"
-            :class="row.is_active ? 'text-c2' : 'text-c1'"
-            @click.stop="toggleActive(row as any)"
+            class="flex-1 rounded-lg border border-bline py-1.5 text-xs transition"
+            :class="row.is_active ? 'text-c2 hover:border-c2' : 'text-c1 hover:border-c1'"
+            @click="toggleActive(row)"
           >
             {{ row.is_active ? '下架' : '上架' }}
           </button>
         </div>
-      </template>
-    </DataTable>
+      </div>
+    </div>
+
+    <!-- 桌機版表格 -->
+    <div class="hidden md:block">
+      <DataTable :columns="columns" :rows="products" :loading="loading">
+        <template #cell-price="{ value }">
+          <span class="font-mono text-c3">${{ Number(value).toLocaleString() }}</span>
+        </template>
+        <template #cell-stock="{ value }">
+          <span :class="Number(value) <= 10 ? 'text-c2' : 'text-c1'" class="font-mono">
+            {{ value }}
+          </span>
+        </template>
+        <template #cell-is_active="{ value }">
+          <span :class="value ? 'text-c1' : 'text-c2'">
+            {{ value ? '● 上架' : '○ 下架' }}
+          </span>
+        </template>
+        <template #cell-actions="{ row }">
+          <div class="flex gap-2">
+            <button
+              class="text-xs text-c4 hover:brightness-125 transition"
+              @click.stop="router.push('/products/' + row.id)"
+            >
+              編輯
+            </button>
+            <button
+              class="text-xs hover:brightness-125 transition"
+              :class="row.is_active ? 'text-c2' : 'text-c1'"
+              @click.stop="toggleActive(row as any)"
+            >
+              {{ row.is_active ? '下架' : '上架' }}
+            </button>
+          </div>
+        </template>
+      </DataTable>
+    </div>
 
     <div class="mt-3 flex items-center justify-between text-xs text-gray-500">
       <span>第 {{ page }} / {{ totalPages }} 頁</span>

@@ -155,20 +155,22 @@ const lineConvOption: EChartsOption = {
       <p class="mt-0.5 text-xs text-gray-500">ECharts · 折線圖 / 柱狀圖 / 餅圖</p>
     </div>
 
-    <div class="mb-3 grid grid-cols-[2fr_1fr] gap-3">
+    <!-- 第一排：年度對比 + 季度訂單 -->
+    <div class="mb-3 grid grid-cols-1 md:grid-cols-[2fr_1fr] gap-3">
       <div class="rounded-xl border border-bline bg-bg2 p-4">
         <div class="text-[13px] font-semibold">年度收入對比</div>
         <div class="mb-3 text-[11px] text-gray-500">折線圖 · 2024 vs 2025 vs 2026</div>
-        <EChart :option="lineMultiOption" height="255px" />
+        <EChart :option="lineMultiOption" height="220px" />
       </div>
       <div class="rounded-xl border border-bline bg-bg2 p-4">
         <div class="text-[13px] font-semibold">季度訂單</div>
         <div class="mb-3 text-[11px] text-gray-500">堆疊柱狀圖</div>
-        <EChart :option="barStackOption" height="255px" />
+        <EChart :option="barStackOption" height="220px" />
       </div>
     </div>
 
-    <div class="grid grid-cols-3 gap-3">
+    <!-- 第二排：三個小圖 -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
       <div class="rounded-xl border border-bline bg-bg2 p-4">
         <div class="text-[13px] font-semibold">付款方式分布</div>
         <div class="mb-3 text-[11px] text-gray-500">環形餅圖</div>
@@ -179,7 +181,7 @@ const lineConvOption: EChartsOption = {
         <div class="mb-3 text-[11px] text-gray-500">餅圖</div>
         <EChart :option="pie4Option" height="190px" />
       </div>
-      <div class="rounded-xl border border-bline bg-bg2 p-4">
+      <div class="rounded-xl border border-bline bg-bg2 p-4 sm:col-span-2 lg:col-span-1">
         <div class="text-[13px] font-semibold">轉換率趨勢</div>
         <div class="mb-3 text-[11px] text-gray-500">折線圖 · %</div>
         <EChart :option="lineConvOption" height="190px" />

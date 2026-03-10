@@ -91,22 +91,60 @@ watch([page, search, role], () => {
       </select>
     </div>
 
-    <DataTable :columns="columns" :rows="users" :loading="loading">
-      <template #cell-role="{ value }">
-        <span :class="['px-2 py-0.5 rounded-full text-[11px] font-mono font-medium',
-                       roleMap[value as string] ?? 'bg-gray-500/10 text-gray-500']">
-          {{ value }}
-        </span>
-      </template>
-      <template #cell-is_active="{ value }">
-        <span :class="value ? 'text-c1' : 'text-c2'">
-          {{ value ? '● 啟用' : '○ 停用' }}
-        </span>
-      </template>
-      <template #cell-last_login="{ value }">
-        <span class="text-gray-500">{{ value ?? '從未登入' }}</span>
-      </template>
-    </DataTable>
+    <!-- 手機版卡片 -->
+    <div class="md:hidden space-y-2">
+      <div v-if="loading" class="text-center py-10 text-xs text-gray-500">載入中...</div>
+      <div v-else-if="users.length === 0" class="text-center py-10 text-xs text-gray-500">沒有用戶</div>
+      <div
+        v-for="row in users"
+        :key="row.id"
+        class="rounded-xl border border-bline bg-bg1 p-3"
+      >
+        <div class="flex items-center justify-between mb-2">
+          <div class="flex items-center gap-2">
+            <!-- 頭像 -->
+            <div class="h-8 w-8 rounded-full bg-gradient-to-br from-c5 to-c4
+                        flex items-center justify-center text-xs font-bold text-white shrink-0">
+              {{ row.name?.[0]?.toUpperCase() ?? '?' }}
+            </div>
+            <div>
+              <div class="text-xs font-medium">{{ row.name }}</div>
+              <div class="text-[11px] text-gray-500">{{ row.email }}</div>
+            </div>
+          </div>
+          <span :class="['px-2 py-0.5 rounded-full text-[11px] font-mono font-medium',
+                         roleMap[row.role] ?? 'bg-gray-500/10 text-gray-500']">
+            {{ row.role }}
+          </span>
+        </div>
+        <div class="flex items-center justify-between text-[11px] text-gray-500 pt-2 border-t border-bline">
+          <span :class="row.is_active ? 'text-c1' : 'text-c2'">
+            {{ row.is_active ? '● 啟用' : '○ 停用' }}
+          </span>
+          <span>最後登入：{{ row.last_login ?? '從未' }}</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 桌機版表格 -->
+    <div class="hidden md:block">
+      <DataTable :columns="columns" :rows="users" :loading="loading">
+        <template #cell-role="{ value }">
+          <span :class="['px-2 py-0.5 rounded-full text-[11px] font-mono font-medium',
+                         roleMap[value as string] ?? 'bg-gray-500/10 text-gray-500']">
+            {{ value }}
+          </span>
+        </template>
+        <template #cell-is_active="{ value }">
+          <span :class="value ? 'text-c1' : 'text-c2'">
+            {{ value ? '● 啟用' : '○ 停用' }}
+          </span>
+        </template>
+        <template #cell-last_login="{ value }">
+          <span class="text-gray-500">{{ value ?? '從未登入' }}</span>
+        </template>
+      </DataTable>
+    </div>
 
     <div class="mt-3 flex items-center justify-between text-xs text-gray-500">
       <span>第 {{ page }} / {{ totalPages }} 頁</span>

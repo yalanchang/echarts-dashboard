@@ -19,11 +19,7 @@ export function getPool(): mysql.Pool {
     queueLimit:         5,  
     enableKeepAlive:    true,
     keepAliveInitialDelay: 0,
-    // 加入 SSL 配置 
-    ssl: {
-      rejectUnauthorized: false  // Clever Cloud 需要這個設定來接受他們的自簽 SSL 證書
-    }
-  })
+  } as mysql.PoolOptions)
 
   return pool
 }

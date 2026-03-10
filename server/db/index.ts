@@ -15,9 +15,9 @@ export function getPool(): mysql.Pool {
     database:           config.dbName as string,
     charset:            'utf8mb4',
     waitForConnections: true,
-    connectionLimit:    2,  
+    connectionLimit:    1,  
     queueLimit:         5,  
-    enableKeepAlive:    true,
+    enableKeepAlive:    false,
     keepAliveInitialDelay: 0,
   } as mysql.PoolOptions)
 
@@ -35,12 +35,15 @@ export async function query<T = unknown>(sql: string, params?: unknown[]): Promi
 }
 
 export async function queryOne<T = unknown>(sql: string, params?: unknown[]): Promise<T | null> {
+  const conn = await getPool().getConnection()
   try {
-    const [rows] = await getPool().query(sql, params)
+    const [rows] = await conn.query(sql, params)
     return ((rows as any[])[0] ?? null) as T | null
   } catch (error) {
     console.error('QueryOne error:', error)
     throw error
+  } finally {
+    conn.release() 
   }
 }
 

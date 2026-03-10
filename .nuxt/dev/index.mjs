@@ -2160,7 +2160,22 @@ const plugins = [
 _WJvWJJJtoK1jzN31x2e37Wj2zPevP56muCTI2OKuk
 ];
 
-const assets = {};
+const assets = {
+  "/index.mjs": {
+    "type": "text/javascript; charset=utf-8",
+    "etag": "\"21fe3-3mPn2EJikkI1YRoCASYc7vJFvms\"",
+    "mtime": "2026-03-10T12:52:56.838Z",
+    "size": 139235,
+    "path": "index.mjs"
+  },
+  "/index.mjs.map": {
+    "type": "application/json",
+    "etag": "\"81015-uBtAljW3yYE7Oazdn4NxXlkrv3k\"",
+    "mtime": "2026-03-10T12:52:56.840Z",
+    "size": 528405,
+    "path": "index.mjs.map"
+  }
+};
 
 function readAsset (id) {
   const serverDir = dirname$1(fileURLToPath(globalThis._importMeta_.url));
@@ -3067,9 +3082,9 @@ function getPool() {
     database: config.dbName,
     charset: "utf8mb4",
     waitForConnections: true,
-    connectionLimit: 2,
+    connectionLimit: 1,
     queueLimit: 5,
-    enableKeepAlive: true,
+    enableKeepAlive: false,
     keepAliveInitialDelay: 0
   });
   return pool;
@@ -3085,12 +3100,15 @@ async function query(sql, params) {
 }
 async function queryOne(sql, params) {
   var _a;
+  const conn = await getPool().getConnection();
   try {
-    const [rows] = await getPool().query(sql, params);
+    const [rows] = await conn.query(sql, params);
     return (_a = rows[0]) != null ? _a : null;
   } catch (error) {
     console.error("QueryOne error:", error);
     throw error;
+  } finally {
+    conn.release();
   }
 }
 async function checkDB() {

@@ -673,7 +673,7 @@ const _inlineRuntimeConfig = {
   "dbUser": "uqb9xz4smqrjsan6",
   "dbPass": "nZsPdKWAw1tNENquLAiS",
   "dbName": "bjctbw5lxnk4zzorrjzk",
-  "jwtSecret": "你的secret"
+  "jwtSecret": "your_jwt_secret_key_here"
 };
 const envOptions = {
   prefix: "NITRO_",
@@ -2163,16 +2163,16 @@ _WJvWJJJtoK1jzN31x2e37Wj2zPevP56muCTI2OKuk
 const assets = {
   "/index.mjs": {
     "type": "text/javascript; charset=utf-8",
-    "etag": "\"21fe3-3mPn2EJikkI1YRoCASYc7vJFvms\"",
-    "mtime": "2026-03-10T12:52:56.838Z",
-    "size": 139235,
+    "etag": "\"2201b-8NdrC9mQmMyznkmBq5xesnmoV2o\"",
+    "mtime": "2026-03-12T03:15:45.837Z",
+    "size": 139291,
     "path": "index.mjs"
   },
   "/index.mjs.map": {
     "type": "application/json",
-    "etag": "\"81015-uBtAljW3yYE7Oazdn4NxXlkrv3k\"",
-    "mtime": "2026-03-10T12:52:56.840Z",
-    "size": 528405,
+    "etag": "\"810c4-K0Mb1DJhRMX/KYT3hzjQVksqUzE\"",
+    "mtime": "2026-03-12T03:15:45.839Z",
+    "size": 528580,
     "path": "index.mjs.map"
   }
 };
@@ -3082,8 +3082,8 @@ function getPool() {
     database: config.dbName,
     charset: "utf8mb4",
     waitForConnections: true,
-    connectionLimit: 1,
-    queueLimit: 5,
+    connectionLimit: 4,
+    queueLimit: 0,
     enableKeepAlive: false,
     keepAliveInitialDelay: 0
   });

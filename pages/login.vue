@@ -166,7 +166,7 @@ function fillTestAccount() {
           @click="submit"
         >
           <span class="flex items-center justify-center gap-2">
-            <span>{{ loading ? '登入中...' : '登入後台' }}</span>
+            <span>登入</span>
           </span>
         </button>
 

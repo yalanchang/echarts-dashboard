@@ -2,8 +2,8 @@
 defineProps<{
   label:   string
   value:   string | number
-  change?: number   // percentage, e.g. 18.4 or -2.3
-  color?:  string   // tailwind text color, e.g. 'text-c1'
+  change?: number  
+  color?:  string   
 }>()
 </script>
 

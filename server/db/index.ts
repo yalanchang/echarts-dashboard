@@ -15,8 +15,8 @@ export function getPool(): mysql.Pool {
     database:           config.dbName as string,
     charset:            'utf8mb4',
     waitForConnections: true,
-    connectionLimit:    1,  
-    queueLimit:         5,  
+    connectionLimit: 4,
+    queueLimit: 0,         
     enableKeepAlive:    false,
     keepAliveInitialDelay: 0,
   } as mysql.PoolOptions)
